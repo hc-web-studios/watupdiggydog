@@ -322,14 +322,6 @@
                 </div>
             </div>
         </div>
-            <a href="#hero" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Home</a>
-            <a href="#services" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Our Services</a>
-            <a href="#" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>News</a>
-            <a href="#contact" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Contact Us</a>
-            <a href="#" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-4 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors mt-4 block text-center" data-nav-link>
-                Buy Templates
-            </a>
-        </div>
     </header>
 
     <main>
@@ -1270,24 +1262,41 @@
             const navLinks = document.querySelectorAll('[data-nav-link]');
             const header = document.querySelector('header');
 
+            // Ensure mobile menu is hidden on page load
+            if (mobileMenu) {
+                mobileMenu.classList.add('opacity-0', 'invisible');
+                mobileMenu.classList.remove('opacity-100', 'visible');
+                document.body.style.overflow = ''; // Ensure body scroll is enabled
+            }
+
             function toggleMobileMenu() {
+                if (!mobileMenu) return;
+                
                 if (mobileMenu.classList.contains('opacity-0')) {
                     // Show menu
                     mobileMenu.classList.remove('opacity-0', 'invisible');
                     mobileMenu.classList.add('opacity-100', 'visible');
-                    mobileMenuButton.querySelector('.menu-icon').classList.add('open');
+                    if (mobileMenuButton && mobileMenuButton.querySelector('.menu-icon')) {
+                        mobileMenuButton.querySelector('.menu-icon').classList.add('open');
+                    }
                     document.body.style.overflow = 'hidden'; // Prevent scrolling
                 } else {
                     // Hide menu
                     mobileMenu.classList.add('opacity-0', 'invisible');
                     mobileMenu.classList.remove('opacity-100', 'visible');
-                    mobileMenuButton.querySelector('.menu-icon').classList.remove('open');
+                    if (mobileMenuButton && mobileMenuButton.querySelector('.menu-icon')) {
+                        mobileMenuButton.querySelector('.menu-icon').classList.remove('open');
+                    }
                     document.body.style.overflow = ''; // Restore scrolling
                 }
             }
 
-            mobileMenuButton.addEventListener('click', toggleMobileMenu);
-            mobileMenuClose.addEventListener('click', toggleMobileMenu);
+            if (mobileMenuButton) {
+                mobileMenuButton.addEventListener('click', toggleMobileMenu);
+            }
+            if (mobileMenuClose) {
+                mobileMenuClose.addEventListener('click', toggleMobileMenu);
+            }
 
             // Handle mobile dropdown functionality
             const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
@@ -1296,40 +1305,78 @@
                 const content = dropdown.querySelector('.mobile-dropdown-content');
                 const arrow = dropdown.querySelector('.mobile-dropdown-arrow');
 
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    
-                    // Close other dropdowns
-                    mobileDropdowns.forEach(otherDropdown => {
-                        if (otherDropdown !== dropdown) {
-                            const otherContent = otherDropdown.querySelector('.mobile-dropdown-content');
-                            const otherArrow = otherDropdown.querySelector('.mobile-dropdown-arrow');
-                            otherContent.classList.add('hidden');
-                            otherArrow.classList.remove('rotate-180');
-                        }
-                    });
+                if (btn && content && arrow) {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        
+                        // Close other dropdowns
+                        mobileDropdowns.forEach(otherDropdown => {
+                            if (otherDropdown !== dropdown) {
+                                const otherContent = otherDropdown.querySelector('.mobile-dropdown-content');
+                                const otherArrow = otherDropdown.querySelector('.mobile-dropdown-arrow');
+                                if (otherContent) otherContent.classList.add('hidden');
+                                if (otherArrow) otherArrow.classList.remove('rotate-180');
+                            }
+                        });
 
-                    // Toggle current dropdown
-                    content.classList.toggle('hidden');
-                    arrow.classList.toggle('rotate-180');
+                        // Toggle current dropdown
+                        content.classList.toggle('hidden');
+                        arrow.classList.toggle('rotate-180');
+                    });
+                }
+            });
+
+            // Close mobile menu and dropdowns when clicking nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Close mobile menu when clicking any link
+                    if (mobileMenu && !mobileMenu.classList.contains('opacity-0')) {
+                        toggleMobileMenu();
+                    }
+                    
+                    // Close any open dropdowns
+                    mobileDropdowns.forEach(dropdown => {
+                        const content = dropdown.querySelector('.mobile-dropdown-content');
+                        const arrow = dropdown.querySelector('.mobile-dropdown-arrow');
+                        if (content) content.classList.add('hidden');
+                        if (arrow) arrow.classList.remove('rotate-180');
+                    });
                 });
             });
 
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    const targetId = e.target.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-
-                    if (targetElement) {
-                        e.preventDefault();
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-
-                    // Close mobile menu when clicking any link
-                    if (!mobileMenu.classList.contains('opacity-0')) {
+            // Close mobile menu when clicking outside of it
+            document.addEventListener('click', (e) => {
+                if (mobileMenu && !mobileMenu.classList.contains('opacity-0')) {
+                    const isClickInsideMenu = mobileMenu.contains(e.target);
+                    const isClickOnMenuButton = mobileMenuButton && mobileMenuButton.contains(e.target);
+                    
+                    if (!isClickInsideMenu && !isClickOnMenuButton) {
                         toggleMobileMenu();
+                        
+                        // Close any open dropdowns
+                        mobileDropdowns.forEach(dropdown => {
+                            const content = dropdown.querySelector('.mobile-dropdown-content');
+                            const arrow = dropdown.querySelector('.mobile-dropdown-arrow');
+                            if (content) content.classList.add('hidden');
+                            if (arrow) arrow.classList.remove('rotate-180');
+                        });
                     }
-                });
+                }
+            });
+
+            // Close mobile menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('opacity-0')) {
+                    toggleMobileMenu();
+                    
+                    // Close any open dropdowns
+                    mobileDropdowns.forEach(dropdown => {
+                        const content = dropdown.querySelector('.mobile-dropdown-content');
+                        const arrow = dropdown.querySelector('.mobile-dropdown-arrow');
+                        if (content) content.classList.add('hidden');
+                        if (arrow) arrow.classList.remove('rotate-180');
+                    });
+                }
             });
 
             // Make header transparent on hero section and opaque on scroll
