@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Watupdiggydog</title>
+    <title>Terms of Service - Watupdiggydog</title>
     <link rel="icon" type="image/png" href="./img/brand/favicon.svg">
     <!-- Fonts from the image: Playfair Display for headings, Inter for body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <!-- Load Tailwind CSS from CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
     <style>
         /* Define a precise color palette based on the image */
         :root {
@@ -159,52 +160,14 @@
 </head>
 <body class="bg-[var(--color-charcoal-dark)] text-[var(--color-off-white)]">
 
-    <!-- Header & Navigation - UPDATED to match new image -->
+   <!-- Header & Navigation - UPDATED to match new image -->
     <header class="sticky top-0 z-50 bg-[var(--color-charcoal-dark)] transition-colors duration-300">
-        <nav class="container mx-auto px-6 py-8 flex items-center justify-between">
-            <!-- Logo on the left side, with an updated look -->
-            <a href="#" class="flex-shrink-0 flex items-center space-x-2">
-                <!-- SVG Icon (simple placeholder for the logo) -->
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="#3a5bb4" xmlns="http://www.w3.org/2000/svg">
-  <path d="M12 18C10.66 18 9.61 16.95 9.61 15.61C9.61 14.27 10.66 13.22 12 13.22C13.34 13.22 14.39 14.27 14.39 15.61C14.39 16.95 13.34 18 12 18ZM7.56 12.18C6.22 12.18 5.17 11.13 5.17 9.79C5.17 8.45 6.22 7.4 7.56 7.4C8.9 7.4 9.95 8.45 9.95 9.79C9.95 11.13 8.9 12.18 7.56 12.18ZM16.44 12.18C15.1 12.18 14.05 11.13 14.05 9.79C14.05 8.45 15.1 7.4 16.44 7.4C17.78 7.4 18.83 8.45 18.83 9.79C18.83 11.13 17.78 12.18 16.44 12.18ZM6.89 17.58C5.55 17.58 4.5 16.53 4.5 15.19C4.5 13.85 5.55 12.8 6.89 12.8C8.23 12.8 9.28 13.85 9.28 15.19C9.28 16.53 8.23 17.58 6.89 17.58ZM17.11 17.58C15.77 17.58 14.72 16.53 14.72 15.19C14.72 13.85 15.77 12.8 17.11 12.8C18.45 12.8 19.5 13.85 19.5 15.19C19.5 16.53 18.45 17.58 17.11 17.58Z"/>
-</svg>
-                </svg>
-                <div class="logo-wrapper flex flex-col items-start">
-                    <div class="text-2xl font-bold font-serif leading-none">Watupdiggydog</div>
-                    <div class="text-sm text-[var(--color-faded-text)] -mt-1 tracking-wider uppercase"></div>
-                </div>
-            </a>
-
-            <!-- Navigation Links in the center -->
-            <div class="hidden md:flex flex-1 items-center justify-center space-x-12">
-                <a href="index.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors">Home</a>
-                <div class="relative group nav-link active">
-                    <a href="#about" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
-                        <span>About</span>
-                        <svg class="w-4 h-4 text-white group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </a>
-
-                    <!-- Dropdown menu -->
-                    <div class="absolute left-0 mt-3 w-48 bg-[var(--color-charcoal-light)] rounded-lg shadow-lg py-2 transform opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all z-50">
-                        <a href="our story.html" class="nav-link active block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Our Story</a>
-                        <a href="products.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Products We Use</a>
-                    </div>
-                </div>
-
-                <div class="relative group">
-                    <a href="services.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
-                        <span>Our Services</span>
-                        <svg class="w-4 h-4 text-white group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </a>
-                </div>
-                <a href="contact.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors">Contact Us</a>
-            </div>
-
-            <!-- CTA Button on the right -->
-            <div class="hidden md:block flex-shrink-0">
-                <a href="#" class="border border-[var(--color-gold)] text-[var(--color-gold)] font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[var(--color-gold)] hover:text-[var(--color-charcoal-dark)] transition-colors">
-                    Book Today
-                </a>
+        <nav class="w-full h-20 flex items-center justify-center">
+            <!-- Navigation Links in the absolute center -->
+            <div class="flex items-center space-x-12">
+                <a href="index.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors nav-link">Home</a>
+                <a href="pp.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors ">Privacy Policy</a>
+                <a href="tos.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors nav-link active">Terms of Service</a>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -219,67 +182,188 @@
 
         <!-- Mobile Navigation Menu (hidden by default) -->
         <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-charcoal-light)] py-4 px-6 shadow-inner">
-            <a href="#hero" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Home</a>
-            <a href="#services" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Our Services</a>
-            <a href="#" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>News</a>
-            <a href="#contact" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Contact Us</a>
+            <a href="index.html" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Home</a>
+            <a href="services.html" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Our Services</a>
+            <a href="our story.html" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Our Story</a>
+            <a href="contact.html" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Contact Us</a>
+            <a href="tos.html" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Terms of Service</a>
             <a href="#" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-4 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors mt-4 block text-center" data-nav-link>
-                Buy Templates
+                Book Today
             </a>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section with Background Image -->
-        <section id="hero" class="relative overflow-hidden w-full h-80 flex items-center text-center px-6">
-            <img src="./img/misc/hero.jpg" alt="Our Story hero" class="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-30">
-            <div class="relative z-10 container mx-auto">
-                <div class="text-sm text-[var(--color-faded-text)] font-medium tracking-widest uppercase mb-3">About Us</div>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold font-serif text-[var(--color-off-white)] leading-tight">Our <span class="text-[var(--color-gold)]">Story</span></h1>
-                <p class="mt-4 text-[var(--color-faded-text)] max-w-2xl mx-auto">Based in the heart of Everton Park, we're a local business dedicated to keeping your canine companions looking and feeling their best.</p>
-                <div class="mt-6 flex justify-center">
-                    <a href="services.html" class="inline-flex items-center gap-3 bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-6 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors">Our Services</a>
+        <!-- Terms of Service Header Section -->
+        <section class="relative py-24 bg-[var(--color-charcoal-dark)]">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <div class="flex items-center justify-center space-x-3 mb-4 text-[var(--color-faded-text)] text-sm font-medium tracking-widest uppercase" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
+                        <div class="w-12 h-px bg-[var(--color-faded-text)]"></div>
+                        <span>Legal Information</span>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-extrabold font-serif text-[var(--color-off-white)] mb-6 leading-tight" data-aos="zoom-in" data-aos-duration="900" data-aos-delay="200">
+                        Terms of <span class="text-[var(--color-gold)]">Service</span>
+                    </h1>
+                    <p class="text-[var(--color-faded-text)] text-lg">Last updated: 31st January 2024</p>
                 </div>
             </div>
         </section>
 
-        <!-- About Us Section with Image on Right -->
-        <section id="about" class="py-24 bg-[var(--color-charcoal-dark)]">
+        <!-- Terms of Service Content -->
+        <section class="py-16 bg-[var(--color-charcoal-light)]">
             <div class="container mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <!-- Text Block -->
-                    <div>
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="w-12 h-px bg-[var(--color-gold)]"></div>
-                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">About Us</div>
-                        </div>
-                        <h2 class="text-4xl font-serif font-bold mb-8">
-                            Our Story
-                        </h2>
-                        <p class="text-[var(--color-faded-text)] mb-8 text-lg">
-                            Based in the heart of Everton Park, Watupdiggydog Dog Wash and Groomer is a local business dedicated to keeping your canine companions looking and feeling their best. This friendly, neighbourhood establishment offers a range of services designed to pamper your pooch, from a simple wash and dry to full-service grooming sessions.
-<br>
-<br>
-Watupdiggydog prides itself on its caring and professional approach. The team understands that every dog is unique, and they work to create a comfortable and stress-free experience for each furry client. Whether your dog needs a quick tidy-up or a breed-specific haircut, they use high-quality products and gentle techniques to ensure a positive visit.
-
-<br>
-<br>
-The business has become a go-to for many Everton Park residents who value a personal touch and reliable service. With a focus on community and canine welfare, Watupdiggydog Dog Wash and Groomer is more than just a place to get your dog cleaned—it's a trusted local spot where four-legged friends are treated like family.
+                <div class="max-w-4xl mx-auto">
+                    
+                    <!-- Acceptance of Terms -->
+                    <div class="mb-12" data-aos="fade-up" data-aos-duration="900">
+                        <h2 class="text-3xl font-serif font-bold mb-6 text-[var(--color-off-white)]">Acceptance of Terms</h2>
+                        <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                            Welcome to DiggyDogs PTY LTD ("DiggyDogs," "we," "our," or "us"). By accessing our website, purchasing our products, or using our services, you agree to comply with and be bound by the following Terms of Service. If you do not agree to these terms, please do not use our website or services.
                         </p>
-                        <a href="services.html" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-8 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors">
-                            Our Services
+                    </div>
+
+                    <!-- Use of Services -->
+                    <div class="mb-12" data-aos="fade-up" data-aos-duration="900">
+                        <h2 class="text-3xl font-serif font-bold mb-6 text-[var(--color-off-white)]">Use of Services</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 text-[var(--color-gold)]">Eligibility</h3>
+                                <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                                    You must be at least 18 years old to use our services. If you are under 18, you may use our services only with the involvement of a parent or guardian.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 text-[var(--color-gold)]">Account Creation</h3>
+                                <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                                    You may need to create an account to access certain features of our services. You are responsible for maintaining the confidentiality of your account information.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 text-[var(--color-gold)]">Accuracy of Information</h3>
+                                <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                                    You agree to provide accurate, current, and complete information when creating an account or making a purchase.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Purchases -->
+                    <div class="mb-12" data-aos="fade-up" data-aos-duration="900">
+                        <h2 class="text-3xl font-serif font-bold mb-6 text-[var(--color-off-white)]">Product Purchases</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 text-[var(--color-gold)]">Order Acceptance</h3>
+                                <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                                    Your order is an offer to buy our products. We reserve the right to accept or decline your order for any reason.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 text-[var(--color-gold)]">Pricing</h3>
+                                <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                                    Prices for our products are subject to change without notice. We are not responsible for errors in the pricing information.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 text-[var(--color-gold)]">Payment</h3>
+                                <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                                    Payment is required before the shipment of products. We accept payment through approved methods on our website.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Intellectual Property -->
+                    <div class="mb-12" data-aos="fade-up" data-aos-duration="900">
+                        <h2 class="text-3xl font-serif font-bold mb-6 text-[var(--color-off-white)]">Intellectual Property</h2>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 text-[var(--color-gold)]">Ownership</h3>
+                                <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                                    All content and materials available on the DiggyDogs website, including but not limited to text, graphics, logos, images, and software, are the property of DiggyDogs PTY LTD and are protected by copyright, trademark, and other intellectual property laws.
+                                </p>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-3 text-[var(--color-gold)]">Use of Materials</h3>
+                                <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                                    You may not reproduce, distribute, modify, transmit, perform, or display any part of our website or materials without prior written consent from DiggyDogs.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Termination of Services -->
+                    <div class="mb-12" data-aos="fade-up" data-aos-duration="900">
+                        <h2 class="text-3xl font-serif font-bold mb-6 text-[var(--color-off-white)]">Termination of Services</h2>
+                        <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                            DiggyDogs reserves the right to terminate or suspend your account and access to our services at any time, with or without cause, and with or without notice.
+                        </p>
+                    </div>
+
+                    <!-- Disclaimer of Warranties -->
+                    <div class="mb-12" data-aos="fade-up" data-aos-duration="900">
+                        <h2 class="text-3xl font-serif font-bold mb-6 text-[var(--color-off-white)]">Disclaimer of Warranties</h2>
+                        <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                            Our services are provided "as is" without any warranty or condition, either express or implied. DiggyDogs does not warrant that our services will be uninterrupted or error-free.
+                        </p>
+                    </div>
+
+                    <!-- Limitation of Liability -->
+                    <div class="mb-12" data-aos="fade-up" data-aos-duration="900">
+                        <h2 class="text-3xl font-serif font-bold mb-6 text-[var(--color-off-white)]">Limitation of Liability</h2>
+                        <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                            DiggyDogs PTY LTD shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses.
+                        </p>
+                    </div>
+
+                    <!-- Governing Law -->
+                    <div class="mb-12" data-aos="fade-up" data-aos-duration="900">
+                        <h2 class="text-3xl font-serif font-bold mb-6 text-[var(--color-off-white)]">Governing Law</h2>
+                        <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                            These Terms of Service shall be governed by and construed in accordance with the laws of the United Kingdom.
+                        </p>
+                    </div>
+
+                    <!-- Changes to Terms -->
+                    <div class="mb-12" data-aos="fade-up" data-aos-duration="900">
+                        <h2 class="text-3xl font-serif font-bold mb-6 text-[var(--color-off-white)]">Changes to Terms</h2>
+                        <p class="text-[var(--color-faded-text)] text-lg leading-relaxed">
+                            DiggyDogs reserves the right to update or modify these Terms of Service at any time. You are encouraged to review this page periodically for changes.
+                        </p>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="mb-12" data-aos="fade-up" data-aos-duration="900">
+                        <h2 class="text-3xl font-serif font-bold mb-6 text-[var(--color-off-white)]">Contact Information</h2>
+                        <p class="text-[var(--color-faded-text)] text-lg leading-relaxed mb-4">
+                            If you have any questions or concerns about these Terms of Service, please contact us at:
+                        </p>
+                        <div class="bg-[var(--color-charcoal-dark)] p-6 rounded-lg">
+                            <a href="mailto:watupdiggydog@gmail.com" class="text-[var(--color-gold)] font-semibold text-lg hover:text-[#c79c55] transition-colors">
+                                watupdiggydog@gmail.com
+                            </a>
+                        </div>
+                        <p class="text-[var(--color-faded-text)] text-lg leading-relaxed mt-6">
+                            By using our website and services, you agree to the terms outlined in these Terms of Service.
+                        </p>
+                    </div>
+
+                    <!-- Back to Home Button -->
+                    <div class="text-center" data-aos="fade-up" data-aos-duration="900">
+                        <a href="index.html" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-4 px-8 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors inline-flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                            </svg>
+                            Back to Home
                         </a>
                     </div>
-                    <!-- Image Block -->
-                    <div>
-                        <img src="./img/brand/logo.png" alt="About Us" class="w-full rounded-2xl ">
-                    </div>
+
                 </div>
             </div>
         </section>
+    </main>
 
-
-    <!-- Footer -->
+   <!-- Footer -->
     <footer class="bg-gradient-to-b from-[var(--color-charcoal-dark)] to-[#0f0d0a] border-t border-[var(--color-charcoal-light)]">
         <div class="container mx-auto px-6 py-16">
             <!-- Main Footer Content -->
@@ -399,6 +483,7 @@ The business has become a go-to for many Everton Park residents who value a pers
     </footer>
 
     <!-- JavaScript for smooth scrolling and mobile menu functionality -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -437,6 +522,16 @@ The business has become a go-to for many Everton Park residents who value a pers
                     header.classList.remove('bg-[var(--color-charcoal-dark)]', 'shadow-lg');
                 }
             });
+
+            // Initialize AOS with subtle settings
+            if (window.AOS) {
+                AOS.init({
+                    once: true,       // animate only once while scrolling
+                    duration: 800,
+                    easing: 'ease-out-cubic',
+                    offset: 120
+                });
+            }
         });
     </script>
 </body>

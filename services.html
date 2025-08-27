@@ -17,6 +17,7 @@
             --color-charcoal-dark: #1b1916;
             --color-charcoal-light: #2c2825;
             --color-gold: #3a5bb4;
+            --color-wf: #fea400;
             --color-off-white: #f5f0ec;
             --color-faded-text: #8c8884;
             --marquee-duration: 24s; /* adjustable */
@@ -154,11 +155,32 @@
         @media (prefers-reduced-motion: reduce) {
             .animate-marquee { animation: none; }
         }
+
+        /* Social media icon styles */
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px; /* Square with rounded corners */
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        .social-icon.rotating {
+            animation: spin360 0.6s ease-in-out;
+        }
+        
+        @keyframes spin360 {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body class="bg-[var(--color-charcoal-dark)] text-[var(--color-off-white)]">
 
-    <!-- Header & Navigation - UPDATED to match new image -->
+      <!-- Header & Navigation - UPDATED to match new image -->
     <header class="sticky top-0 z-50 bg-[var(--color-charcoal-dark)] transition-colors duration-300">
         <nav class="container mx-auto px-6 py-8 flex items-center justify-between">
             <!-- Logo on the left side, with an updated look -->
@@ -174,29 +196,42 @@
                 </div>
             </a>
 
-            <!-- Navigation Links in the center -->
+             <!-- Navigation Links in the center -->
             <div class="hidden md:flex flex-1 items-center justify-center space-x-12">
-                <a href="#hero" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors nav-link active">Home</a>
+                <a href="index.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors">Home</a>
                 <div class="relative group">
-                    <a href="#about" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
+                    <a href="" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
                         <span>About</span>
                         <svg class="w-4 h-4 text-white group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </a>
 
                     <!-- Dropdown menu -->
                     <div class="absolute left-0 mt-3 w-48 bg-[var(--color-charcoal-light)] rounded-lg shadow-lg py-2 transform opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all z-50">
-                        <a href="#about" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Our Story</a>
-                        <a href="#products" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Products We Use</a>
+                        <a href="our story.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Our Story</a>
+                        <a href="products.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Products We Use</a>
                     </div>
                 </div>
 
-                <div class="relative group">
-                    <a href="#services" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
-                        <span>Our Services</span>
+                 <div class="relative group nav-link active">
+                    <a href="services.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1 ">
+                        <span>Services</span>
                         <svg class="w-4 h-4 text-white group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </a>
+
+                    <!-- Dropdown menu -->
+                    <div class="absolute left-0 mt-3 w-48 bg-[var(--color-charcoal-light)] rounded-lg shadow-lg py-2 transform opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all z-50">
+                        <a href="service1.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Deshed</a>
+                        <a href="service2.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Deshed bath and towel dry</a>
+                        <a href="service3.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Full Groom</a>
+                        <a href="service4.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Full Groom style cuts</a>
+                        <a href="service5.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Nails</a>
+                        <a href="service6.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Oodles, poodles and doodles</a>
+                        <a href="service7.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Puppy First Groom</a>
+                        <a href="service8.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Senior comfort grooms</a>
+                        
+                    </div>
                 </div>
-                <a href="#contact" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors">Contact Us</a>
+                <a href="contact.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors">Contact Us</a>
             </div>
 
             <!-- CTA Button on the right -->
@@ -215,308 +250,323 @@
                 </div>
             </button>
         </nav>
-
-        <!-- Mobile Navigation Menu (hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-charcoal-light)] py-4 px-6 shadow-inner">
-            <a href="#hero" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Home</a>
-            <a href="#services" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Our Services</a>
-            <a href="#" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>News</a>
-            <a href="#contact" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Contact Us</a>
-            <a href="#" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-4 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors mt-4 block text-center" data-nav-link>
-                Buy Templates
-            </a>
-        </div>
-    </header>
-
     <main>
         <!-- Hero Section with Background Image -->
-        <section id="hero" class="relative overflow-hidden w-full h-screen flex flex-col justify-center items-center text-center px-6">
-            <img src="./img/misc/hero.jpg" alt="Construction background" class="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-40">
+        <section id="hero" class="relative overflow-hidden w-full h-80 flex items-center text-center px-6">
+            <img src="./img/misc/hero.jpg" alt="Dog grooming background" class="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-30">
             <div class="relative z-10 container mx-auto">
-                <div class="flex items-center justify-center space-x-3 mb-4 text-[var(--color-faded-text)] text-sm font-medium tracking-widest uppercase">
-                    <div class="w-12 h-px bg-[var(--color-faded-text)]"></div>
-                    <span>Happy Pups, Happy Families</span>
-                </div>
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold font-serif text-[var(--color-off-white)] mb-6 leading-tight md:leading-snug">
-                   Your Local Paw-tners<br>in <span class="text-[var(--color-gold)]">Grooming</span>
-                </h1>
+                <div class="text-sm text-[var(--color-faded-text)] font-medium tracking-widest uppercase mb-3">Our Services</div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold font-serif text-[var(--color-off-white)] leading-tight">Our Professional <span class="text-[var(--color-gold)]">Services</span></h1>
+                <p class="mt-4 text-[var(--color-faded-text)] max-w-2xl mx-auto">From basic grooming to specialized care, we offer a complete range of professional services to keep your furry friend looking and feeling their best.</p>
             </div>
         </section>
 
-        <!-- Featured Projects Gallery -->
-        <section id="projects" class="py-24 bg-[var(--color-charcoal-light)]">
-            <div class="container mx-auto px-6">
-                <div class="flex items-center space-x-4 mb-12">
-                    <div class="w-12 h-px bg-[var(--color-gold)]"></div>
-                    <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Featured Pups</div>
-                </div>
-                <h2 class="text-4xl font-serif font-bold mb-12">Elevate Your Pups Style</h2>
-
-                <!-- Marquee slider: duplicates the slides to create a seamless infinite loop -->
-                <div class="marquee full-bleed">
-                    <div class="marquee__inner animate-marquee">
-                        <!-- Original set -->
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-1.jpg" alt="Featured Project 1" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-2.jpg" alt="Featured Project 2" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-3.jpg" alt="Featured Project 3" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="img/slider/hair-style-4.jpg" alt="Featured Project 4" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-5.jpg" alt="Featured Project 5" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-6.jpg" alt="Featured Project 6" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-7.jpg" alt="Featured Project 7" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-8.jpg" alt="Featured Project 8" class="w-full aspect-square object-cover">
-                        </div>
-
-                        <!-- Duplicate set for seamless loop -->
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-1.jpg" alt="Featured Project 1" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-2.jpg" alt="Featured Project 2" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-3.jpg" alt="Featured Project 3" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="img/slider/hair-style-4.jpg" alt="Featured Project 4" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-5.jpg" alt="Featured Project 5" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-6.jpg" alt="Featured Project 6" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-7.jpg" alt="Featured Project 7" class="w-full aspect-square object-cover">
-                        </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
-                            <img src="./img/slider/hair-style-8.jpg" alt="Featured Project 8" class="w-full aspect-square object-cover">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- About Us Section with Image on Right -->
-        <section id="about" class="py-24 bg-[var(--color-charcoal-dark)]">
-            <div class="container mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <!-- Text Block -->
-                    <div>
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="w-12 h-px bg-[var(--color-gold)]"></div>
-                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">About Us</div>
-                        </div>
-                        <h2 class="text-4xl font-serif font-bold mb-8">
-                            Our Story
-                        </h2>
-                        <p class="text-[var(--color-faded-text)] mb-8 text-lg">
-                            Based in the heart of Everton Park, Watupdiggydog Dog Wash and Groomer is a local business dedicated to keeping your canine companions looking and feeling their best. This friendly, neighbourhood establishment offers a range of services designed to pamper your pooch, from a simple wash and dry to full-service grooming sessions.
-<br>
-<br>
-Watupdiggydog prides itself on its caring and professional approach. The team understands that every dog is unique, and they work to create a comfortable and stress-free experience for each furry client. Whether your dog needs a quick tidy-up or a breed-specific haircut, they use high-quality products and gentle techniques to ensure a positive visit.
-
-<br>
-<br>
-The business has become a go-to for many Everton Park residents who value a personal touch and reliable service. With a focus on community and canine welfare, Watupdiggydog Dog Wash and Groomer is more than just a place to get your dog cleaned—it's a trusted local spot where four-legged friends are treated like family.
-                        </p>
-                        <a href="#" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-8 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors">
-                            Our Services
-                        </a>
-                    </div>
-                    <!-- Image Block -->
-                    <div>
-                        <img src="./img/brand/logo.png" alt="About Us" class="w-full rounded-2xl ">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services Section with two main cards -->
+        <!-- Services Section with eight service boxes -->
         <section id="services" class="py-24 bg-[var(--color-charcoal-light)]">
             <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Service Card 1 -->
-                    <div class="relative rounded-2xl overflow-hidden shadow-xl">
-                        <img src="https://placehold.co/900x600/1b1916/d4a75e?text=Service+1" alt="Service 1" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 p-8 flex flex-col justify-end service-overlay">
-                            <div class="flex items-center space-x-4 mb-2">
-                                <div class="w-12 h-px bg-[var(--color-gold)]"></div>
-                                <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Our Services</div>
-                            </div>
-                            <h3 class="text-3xl font-serif font-bold">Civil Engineering Contractors</h3>
-                            <p class="text-[var(--color-off-white)] mt-2 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-                        </div>
-                    </div>
-                    <!-- Service Card 2 -->
-                    <div class="relative rounded-2xl overflow-hidden shadow-xl">
-                        <img src="https://placehold.co/900x600/1b1916/d4a75e?text=Service+2" alt="Service 2" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 p-8 flex flex-col justify-end service-overlay">
-                            <div class="flex items-center space-x-4 mb-2">
-                                <div class="w-12 h-px bg-[var(--color-gold)]"></div>
-                                <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Our Services</div>
-                            </div>
-                            <h3 class="text-3xl font-serif font-bold">Surveying and Mapping</h3>
-                            <p class="text-[var(--color-off-white)] mt-2 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section class="py-24 bg-[var(--color-charcoal-dark)]">
-            <div class="container mx-auto px-6">
                 <div class="flex items-center space-x-4 mb-12">
                     <div class="w-12 h-px bg-[var(--color-gold)]"></div>
-                    <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Client Testimonial</div>
+                    <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Our Services</div>
                 </div>
-                <h2 class="text-4xl font-serif font-bold mb-12">What Our Clients Say</h2>
-                <div class="horizontal-scroll pb-4">
-                    <!-- Testimonial 1 -->
-                    <div class="w-[350px] bg-[var(--color-charcoal-light)] p-8 rounded-lg shadow-xl flex-shrink-0">
-                        <div class="flex items-center mb-6">
-                            <img src="https://placehold.co/60x60/1b1916/d4a75e?text=JD" alt="Client 1" class="rounded-full w-14 h-14 mr-4 object-cover">
-                            <div>
-                                <h4 class="font-bold text-lg">John Doe</h4>
-                                <p class="text-sm text-[var(--color-faded-text)]">CEO, Example Company</p>
+
+                <h2 class="text-4xl font-serif font-bold mb-8">Services We Offer</h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                    <!-- Service 1: Deshed -->
+                    <div id="svc-basic-wash" class="relative group bg-[var(--color-charcoal-dark)] p-6 rounded-2xl border-2 border-transparent hover:border-[var(--color-gold)] transition-all duration-300 transform hover:scale-[1.02] focus-within:ring-4 focus-within:ring-[rgba(58,91,180,0.08)] aspect-square shadow-sm hover:shadow-2xl">
+                        <a href="services.html#deshed" class="absolute inset-0 z-0" aria-hidden="true" tabindex="-1"></a>
+                        <div class="relative z-10 flex flex-col h-full">
+                            <div class="flex-1">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] rounded-full flex items-center justify-center text-2xl font-bold">🐾</div>
+                                    <div>
+                                        <h3 class="font-semibold text-[var(--color-off-white)] text-xl md:text-2xl leading-tight">Deshed</h3>
+                                        <p class="text-xs md:text-sm text-[var(--color-faded-text)] tracking-wide uppercase mt-1">Undercoat · Brush-Out</p>
+                                    </div>
+                                </div>
+
+                                <p class="text-[var(--color-faded-text)] text-sm md:text-base leading-relaxed">Specialised brush-out to reduce loose undercoat and minimise shedding — ideal as a seasonal maintenance treatment.</p>
+                            </div>
+
+                            <div class="mt-6">
+                                <a href="booking.html?service=deshed" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full font-semibold text-sm bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] shadow-md hover:shadow-lg transition-all duration-200">Book Now</a>
                             </div>
                         </div>
-                        <p class="text-[var(--color-faded-text)] italic text-sm">"Working with them was an absolute pleasure. Their team is incredibly professional and the results speak for themselves. We couldn't be happier with our new building!"</p>
                     </div>
-                    <!-- Testimonial 2 -->
-                    <div class="w-[350px] bg-[var(--color-charcoal-light)] p-8 rounded-lg shadow-xl flex-shrink-0">
-                        <div class="flex items-center mb-6">
-                            <img src="https://placehold.co/60x60/1b1916/d4a75e?text=JA" alt="Client 2" class="rounded-full w-14 h-14 mr-4 object-cover">
-                            <div>
-                                <h4 class="font-bold text-lg">Jane Appleseed</h4>
-                                <p class="text-sm text-[var(--color-faded-text)]">Project Manager</p>
+
+                    <!-- Service 2: Deshed bath and towel dry -->
+                    <div id="svc-deluxe-wash" class="relative group bg-[var(--color-charcoal-dark)] p-6 rounded-2xl border-2 border-transparent hover:border-[var(--color-gold)] transition-all duration-300 transform hover:scale-[1.02] focus-within:ring-4 focus-within:ring-[rgba(58,91,180,0.08)] aspect-square shadow-sm hover:shadow-2xl">
+                        <a href="services.html#deshed-bath" class="absolute inset-0 z-0" aria-hidden="true" tabindex="-1"></a>
+                        <div class="relative z-10 flex flex-col h-full">
+                            <div class="flex-1">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] rounded-full flex items-center justify-center text-2xl font-bold">🛁</div>
+                                    <div>
+                                        <h3 class="font-semibold text-[var(--color-off-white)] text-xl md:text-2xl leading-tight">Deshed bath and towel dry</h3>
+                                        <p class="text-xs md:text-sm text-[var(--color-faded-text)] tracking-wide uppercase mt-1">Shampoo · Towel Dry</p>
+                                    </div>
+                                </div>
+
+                                <p class="text-[var(--color-faded-text)] text-sm md:text-base leading-relaxed">Deshedding bath with conditioning and towel dry — removes loose coat while leaving the fur soft and manageable.</p>
+                            </div>
+
+                            <div class="mt-6">
+                                <a href="booking.html?service=deshed-bath" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full font-semibold text-sm bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] shadow-md hover:shadow-lg transition-all duration-200">Book Now</a>
                             </div>
                         </div>
-                        <p class="text-[var(--color-faded-text)] italic text-sm">"The professionalism and communication from this team were outstanding. They were a pleasure to work with, and the final product exceeded our expectations."</p>
                     </div>
-                    <!-- Testimonial 3 -->
-                    <div class="w-[350px] bg-[var(--color-charcoal-light)] p-8 rounded-lg shadow-xl flex-shrink-0">
-                        <div class="flex items-center mb-6">
-                            <img src="https://placehold.co/60x60/1b1916/d4a75e?text=SB" alt="Client 3" class="rounded-full w-14 h-14 mr-4 object-cover">
-                            <div>
-                                <h4 class="font-bold text-lg">Sam Black</h4>
-                                <p class="text-sm text-[var(--color-faded-text)]">Director of Operations</p>
+
+                    <!-- Service 3: Full Groom - Pet Cut -->
+                    <div id="svc-full-groom" class="relative group bg-[var(--color-charcoal-dark)] p-6 rounded-2xl border-2 border-transparent hover:border-[var(--color-gold)] transition-all duration-300 transform hover:scale-[1.02] focus-within:ring-4 focus-within:ring-[rgba(58,91,180,0.08)] aspect-square shadow-sm hover:shadow-2xl">
+                        <a href="services.html#full-groom-pet" class="absolute inset-0 z-0" aria-hidden="true" tabindex="-1"></a>
+                        <div class="relative z-10 flex flex-col h-full">
+                            <div class="flex-1">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] rounded-full flex items-center justify-center text-2xl font-bold">✂️</div>
+                                    <div>
+                                        <h3 class="font-semibold text-[var(--color-off-white)] text-xl md:text-2xl leading-tight">Full Groom - Pet Cut</h3>
+                                        <p class="text-xs md:text-sm text-[var(--color-faded-text)] tracking-wide uppercase mt-1">Clip · Tidy</p>
+                                    </div>
+                                </div>
+
+                                <p class="text-[var(--color-faded-text)] text-sm md:text-base leading-relaxed">Comprehensive pet cut including clipping and scissor finishing — a practical, neat style for most companion dogs.</p>
+                            </div>
+
+                            <div class="mt-6">
+                                <a href="service3.html" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full font-semibold text-sm bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] shadow-md hover:shadow-lg transition-all duration-200">Book Now</a>
                             </div>
                         </div>
-                        <p class="text-[var(--color-faded-text)] italic text-sm">"From start to finish, the team was professional and reliable. They handled every detail with care and delivered a fantastic result on time and on budget."</p>
                     </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Text with Image Grid Section -->
-        <section class="py-24 bg-[var(--color-charcoal-light)]">
-            <div class="container mx-auto px-6">
-                <div class="grid lg:grid-cols-2 gap-16 items-center">
-                    <!-- Text Block -->
-                    <div>
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div class="w-12 h-px bg-[var(--color-gold)]"></div>
-                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Company Culture</div>
-                        </div>
-                        <h2 class="text-4xl font-serif font-bold mb-8">
-                            Our team is professional and reliable
-                        </h2>
-                        <p class="text-[var(--color-faded-text)] mb-8 text-lg">
-                            We pride ourselves on our team's commitment to excellence. Every member of our staff is a dedicated professional, focused on delivering superior quality and a seamless experience for our clients.
-                        </p>
-                        <a href="#" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-8 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors">
-                            Contact Us
-                        </a>
-                    </div>
-                    <!-- Image Grid -->
-                    <div class="grid grid-cols-2 gap-6">
-                        <img src="./img/misc/dog-1.jpg" alt="Image A" class="w-full rounded-2xl shadow-lg img-hover-scale">
-                        <img src="https://placehold.co/400x300/1b1916/d4a75e?text=Image+B" alt="Image B" class="w-full rounded-2xl shadow-lg mt-8 img-hover-scale">
-                        <img src="https://placehold.co/400x300/1b1916/d4a75e?text=Image+C" alt="Image C" class="w-full rounded-2xl shadow-lg img-hover-scale">
-                        <img src="https://placehold.co/400x300/1b1916/d4a75e?text=Image+D" alt="Image D" class="w-full rounded-2xl shadow-lg mt-8 img-hover-scale">
-                    </div>
-                </div>
-            </div>
-        </section>
+                    <!-- Service 4: Full Groom style cuts -->
+                    <div id="svc-puppy-groom" class="relative group bg-[var(--color-charcoal-dark)] p-6 rounded-2xl border-2 border-transparent hover:border-[var(--color-gold)] transition-all duration-300 transform hover:scale-[1.02] focus-within:ring-4 focus-within:ring-[rgba(58,91,180,0.08)] aspect-square shadow-sm hover:shadow-2xl">
+                        <a href="services.html#full-groom-style" class="absolute inset-0 z-0" aria-hidden="true" tabindex="-1"></a>
+                        <div class="relative z-10 flex flex-col h-full">
+                            <div class="flex-1">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] rounded-full flex items-center justify-center text-2xl font-bold">💇‍♂️</div>
+                                    <div>
+                                        <h3 class="font-semibold text-[var(--color-off-white)] text-xl md:text-2xl leading-tight">Full Groom style cuts</h3>
+                                        <p class="text-xs md:text-sm text-[var(--color-faded-text)] tracking-wide uppercase mt-1">Breed · Styling</p>
+                                    </div>
+                                </div>
 
-        <!-- Our Team Section -->
-        <section class="py-24 bg-[var(--color-charcoal-dark)]">
-            <div class="container mx-auto px-6">
-                <div class="flex items-center space-x-4 mb-8 justify-center">
-                    <svg class="w-10 h-10 text-[var(--color-gold)]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path d="M12 13.5c-2.8 0-5.5 2.3-5.5 4.5 0 1.2.9 2.5 2.2 2.5 1.8 0 2.7-1.7 3.3-2.9.6 1.2 1.5 2.9 3.3 2.9 1.3 0 2.2-1.3 2.2-2.5 0-2.2-2.7-4.5-5.5-4.5z" fill="currentColor" />
-                        <ellipse cx="7.2" cy="6.6" rx="1.8" ry="2.2" fill="currentColor"/>
-                        <ellipse cx="9.8" cy="4.4" rx="1.6" ry="2.1" fill="currentColor"/>
-                        <ellipse cx="14.2" cy="4.4" rx="1.6" ry="2.1" fill="currentColor"/>
-                        <ellipse cx="16.8" cy="6.6" rx="1.8" ry="2.2" fill="currentColor"/>
-                    </svg>
-                </div>
+                                <p class="text-[var(--color-faded-text)] text-sm md:text-base leading-relaxed">Show and style grooming for breed-specific finishes — precision scissoring and finishing for a polished look.</p>
+                            </div>
 
-                <h2 class="text-4xl md:text-5xl font-serif font-bold text-[var(--color-gold)] text-center mb-12">About Our Stylists</h2>
-
-                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <!-- Image (left) -->
-                    <div class="flex justify-center lg:justify-end">
-                        <div class="w-full max-w-[460px] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-black/30">
-                            <img src="./img/misc/zoe & Dog.jpg" alt="Zoe Rae" class="w-full h-full object-cover">
+                            <div class="mt-6">
+                                <a href="booking.html?service=full-groom-style" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full font-semibold text-sm bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] shadow-md hover:shadow-lg transition-all duration-200">Book Now</a>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Text (right) -->
-                    <div class="text-[var(--color-faded-text)] font-serif text-lg leading-relaxed max-w-2xl mx-auto">
-                        <p class="mb-6">My name is Zoe-Rae, a proud mother of three human babies and three fur-babies. I happily manage and operate Watupdiggydog with a focus on gentle, professional care — ensuring every pup leaves happy and healthy.</p>
+                    <!-- Service 5: Nails -->
+                    <div id="svc-nail-trim" class="relative group bg-[var(--color-charcoal-dark)] p-6 rounded-2xl border-2 border-transparent hover:border-[var(--color-gold)] transition-all duration-300 transform hover:scale-[1.02] focus-within:ring-4 focus-within:ring-[rgba(58,91,180,0.08)] aspect-square shadow-sm hover:shadow-2xl">
+                        <a href="services.html#nails" class="absolute inset-0 z-0" aria-hidden="true" tabindex="-1"></a>
+                        <div class="relative z-10 flex flex-col h-full">
+                            <div class="flex-1">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] rounded-full flex items-center justify-center text-2xl font-bold">💅</div>
+                                    <div>
+                                        <h3 class="font-semibold text-[var(--color-off-white)] text-xl md:text-2xl leading-tight">Nails</h3>
+                                        <p class="text-xs md:text-sm text-[var(--color-faded-text)] tracking-wide uppercase mt-1">Trim · Grind</p>
+                                    </div>
+                                </div>
 
-                        <p class="mb-6">My passion for animals began at a young age. From following a dog home when I was two, to volunteering with local rescue organisations, animals have always been my life. I bring years of hands-on grooming experience and a gentle approach to every appointment.</p>
+                                <p class="text-[var(--color-faded-text)] text-sm md:text-base leading-relaxed">Careful nail trimming with optional grinding for smooth edges — gentle handling for nervous pups.</p>
+                            </div>
 
-                        <p class="mb-6">Your dog's safety and comfort are my top priorities. Whether it's a quick wash or a full groom, I personally oversee each session to guarantee a calm, positive experience.</p>
-
-                        <a href="#about" class="inline-block bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-8 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors">Learn More</a>
+                            <div class="mt-6">
+                                <a href="booking.html?service=nails" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full font-semibold text-sm bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] shadow-md hover:shadow-lg transition-all duration-200">Book Now</a>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Service 6: Oodles, Poodles & Doodles -->
+                    <div id="svc-deshed" class="relative group bg-[var(--color-charcoal-dark)] p-6 rounded-2xl border-2 border-transparent hover:border-[var(--color-gold)] transition-all duration-300 transform hover:scale-[1.02] focus-within:ring-4 focus-within:ring-[rgba(58,91,180,0.08)] aspect-square shadow-sm hover:shadow-2xl">
+                        <a href="services.html#doodle-care" class="absolute inset-0 z-0" aria-hidden="true" tabindex="-1"></a>
+                        <div class="relative z-10 flex flex-col h-full">
+                            <div class="flex-1">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] rounded-full flex items-center justify-center text-2xl font-bold">🌀</div>
+                                    <div>
+                                        <h3 class="font-semibold text-[var(--color-off-white)] text-xl md:text-2xl leading-tight">Oodles, Poodles & Doodles</h3>
+                                        <p class="text-xs md:text-sm text-[var(--color-faded-text)] tracking-wide uppercase mt-1">Curly · De-matting</p>
+                                    </div>
+                                </div>
+
+                                <p class="text-[var(--color-faded-text)] text-sm md:text-base leading-relaxed">Specialist coat care for curly and textured breeds — de-matting, tidy trims and tailored maintenance cuts.</p>
+                            </div>
+
+                            <div class="mt-6">
+                                <a href="service6.html" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full font-semibold text-sm bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] shadow-md hover:shadow-lg transition-all duration-200">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 7: Puppy First Groom -->
+                    <div id="svc-flea-bath" class="relative group bg-[var(--color-charcoal-dark)] p-6 rounded-2xl border-2 border-transparent hover:border-[var(--color-gold)] transition-all duration-300 transform hover:scale-[1.02] focus-within:ring-4 focus-within:ring-[rgba(58,91,180,0.08)] aspect-square shadow-sm hover:shadow-2xl">
+                        <a href="services.html#puppy-first" class="absolute inset-0 z-0" aria-hidden="true" tabindex="-1"></a>
+                        <div class="relative z-10 flex flex-col h-full">
+                            <div class="flex-1">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] rounded-full flex items-center justify-center text-2xl font-bold">🐶</div>
+                                    <div>
+                                        <h3 class="font-semibold text-[var(--color-off-white)] text-xl md:text-2xl leading-tight">Puppy First Groom</h3>
+                                        <p class="text-xs md:text-sm text-[var(--color-faded-text)] tracking-wide uppercase mt-1">Intro · Gentle Care</p>
+                                    </div>
+                                </div>
+
+                                <p class="text-[var(--color-faded-text)] text-sm md:text-base leading-relaxed">A calm, patient introduction to grooming for puppies — short sessions focused on positive handling and familiarisation.</p>
+                            </div>
+
+                            <div class="mt-6">
+                                <a href="booking.html?service=puppy-first" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full font-semibold text-sm bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] shadow-md hover:shadow-lg transition-all duration-200">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 8: Senior comfort grooms -->
+                    <div id="svc-ear-cleaning" class="relative group bg-[var(--color-charcoal-dark)] p-6 rounded-2xl border-2 border-transparent hover:border-[var(--color-gold)] transition-all duration-300 transform hover:scale-[1.02] focus-within:ring-4 focus-within:ring-[rgba(58,91,180,0.08)] aspect-square shadow-sm hover:shadow-2xl">
+                        <a href="services.html#senior-groom" class="absolute inset-0 z-0" aria-hidden="true" tabindex="-1"></a>
+                        <div class="relative z-10 flex flex-col h-full">
+                            <div class="flex-1">
+                                <div class="flex items-start gap-4 mb-4">
+                                    <div class="w-14 h-14 bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] rounded-full flex items-center justify-center text-2xl font-bold">🛋️</div>
+                                    <div>
+                                        <h3 class="font-semibold text-[var(--color-off-white)] text-xl md:text-2xl leading-tight">Senior comfort grooms</h3>
+                                        <p class="text-xs md:text-sm text-[var(--color-faded-text)] tracking-wide uppercase mt-1">Slow · Gentle</p>
+                                    </div>
+                                </div>
+
+                                <p class="text-[var(--color-faded-text)] text-sm md:text-base leading-relaxed">Adapted grooming sessions for senior dogs — slow pace, extra comfort supports and gentle handling to reduce stress.</p>
+                            </div>
+
+                            <div class="mt-6">
+                                <a href="booking.html?service=senior-groom" class="w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full font-semibold text-sm bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] shadow-md hover:shadow-lg transition-all duration-200">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </section>
-
-        <!-- Contact Section / CTA -->
-        <section id="contact" class="relative py-24 bg-[var(--color-charcoal-light)]">
-            <img src="https://placehold.co/1920x1080/1b1916/d4a75e?text=Contact+Background" alt="Contact Section" class="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-40">
-            <div class="relative z-10 container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-serif font-bold mb-6">Need a Contractor?</h2>
-                <p class="text-[var(--color-faded-text)] max-w-2xl mx-auto mb-10 text-lg">
-                    Contact us to find out how our professional team can assist you with your next construction or engineering project.
-                </p>
-                <a href="#" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-4 px-12 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors">
-                    Get in Touch
-                </a>
-            </div>
-        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-[var(--color-charcoal-dark)] py-12 border-t border-[var(--color-charcoal-light)]">
-        <div class="container mx-auto px-6 text-center">
-            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-[var(--color-faded-text)]">
-                <a href="#" class="font-semibold text-[var(--color-gold)] text-xl font-serif">ContractoR</a>
-                <p>&copy; 2023 All Rights Reserved.</p>
-                <div class="flex space-x-4">
-                    <a href="#" class="hover:text-[var(--color-off-white)] transition-colors">Privacy Policy</a>
-                    <a href="#" class="hover:text-[var(--color-off-white)] transition-colors">Terms of Service</a>
+   <!-- Footer -->
+    <footer class="bg-gradient-to-b from-[var(--color-charcoal-dark)] to-[#0f0d0a] border-t border-[var(--color-charcoal-light)]">
+        <div class="container mx-auto px-6 py-16">
+            <!-- Main Footer Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-12">
+                
+                <!-- Brand & Description -->
+                <div class="lg:col-span-4 space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <img src="./img/brand/logo.png" alt="Watupdiggydog" class="h-12 w-12 rounded-lg" />
+                        <div>
+                            <h3 class="text-xl font-bold font-serif text-[var(--color-off-white)]">Watupdiggydog</h3>
+                            <p class="text-sm text-[var(--color-gold)] font-medium">Dog Grooming Excellence</p>
+                        </div>
+                    </div>
+                    <p class="text-[var(--color-faded-text)] leading-relaxed max-w-sm">
+                        Professional dog grooming services in Everton Park. We treat every pup with care, love, and attention they deserve.
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <a href="https://www.facebook.com/Watupdiggydogs" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="social-icon flex items-center justify-center bg-[var(--color-charcoal-light)] hover:bg-[var(--color-gold)] hover:scale-110 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[var(--color-off-white)]" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S2 6.48 2 12.07c0 5 3.66 9.13 8.44 9.93v-7.03H7.9v-2.9h2.54V9.41c0-2.5 1.49-3.88 3.77-3.88 1.09 0 2.23.2 2.23.2v2.45h-1.26c-1.25 0-1.64.78-1.64 1.58v1.9h2.8l-.45 2.9h-2.35v7.03C18.34 21.2 22 17.07 22 12.07z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/watupdiggydogs/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon flex items-center justify-center bg-[var(--color-charcoal-light)] hover:bg-[var(--color-gold)] hover:scale-110 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[var(--color-off-white)]" viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.2A4.8 4.8 0 1 0 16.8 13 4.81 4.81 0 0 0 12 8.2zm6.4-3.6a1.2 1.2 0 1 0 1.2 1.2 1.2 1.2 0 0 0-1.2-1.2zM12 15.3A3.3 3.3 0 1 1 15.3 12 3.3 3.3 0 0 1 12 15.3z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="lg:col-span-4 space-y-6">
+                    <h4 class="text-lg font-semibold text-[var(--color-off-white)] flex items-center space-x-2">
+                        <div class="w-6 h-6 bg-[var(--color-gold)] rounded-full flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-[var(--color-charcoal-dark)]" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                            </svg>
+                        </div>
+                        <span>Get in Touch</span>
+                    </h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 group">
+                            <div class="w-8 h-8 bg-[var(--color-gold)] rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[var(--color-charcoal-dark)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-[var(--color-faded-text)] uppercase tracking-wide font-medium">Phone</p>
+                                <a href="tel:0473857657" class="font-semibold text-[var(--color-off-white)] hover:text-[var(--color-gold)] transition-colors">0473 857 657</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 group">
+                            <div class="w-8 h-8 bg-[var(--color-gold)] rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[var(--color-charcoal-dark)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs text-[var(--color-faded-text)] uppercase tracking-wide font-medium">Email</p>
+                                <a href="mailto:watupdiggydog@gmail.com" class="font-semibold text-[var(--color-off-white)] hover:text-[var(--color-gold)] transition-colors break-words">watupdiggydog@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legal -->
+                <div class="lg:col-span-4 space-y-8">
+                    <!-- Legal -->
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-semibold text-[var(--color-off-white)] flex items-center space-x-2">
+                            <div class="w-6 h-6 bg-[var(--color-gold)] rounded-full flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-[var(--color-charcoal-dark)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <span>Legal</span>
+                        </h4>
+                        <div class="space-y-2">
+                            <a href="pp.html" class="flex items-center justify-between group p-2 rounded-lg hover:bg-[var(--color-charcoal-light)] transition-colors">
+                                <span class="text-[var(--color-faded-text)] group-hover:text-[var(--color-off-white)] text-sm font-medium transition-colors">Privacy Policy</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[var(--color-faded-text)] group-hover:text-[var(--color-gold)] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                            <a href="tos.html" class="flex items-center justify-between group p-2 rounded-lg hover:bg-[var(--color-charcoal-light)] transition-colors">
+                                <span class="text-[var(--color-faded-text)] group-hover:text-[var(--color-off-white)] text-sm font-medium transition-colors">Terms of Service</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-[var(--color-faded-text)] group-hover:text-[var(--color-gold)] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-[var(--color-charcoal-light)] pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="flex items-center space-x-6 text-sm text-[var(--color-faded-text)]">
+                        <p>&copy; 2024 Watupdiggydog. All rights reserved.</p>
+                        <div class="hidden md:flex items-center space-x-2">
+                            <div class="w-2 h-2 bg-[var(--color-gold)] rounded-full"></div>
+                            <p>Everton Park, QLD</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2 text-sm">
+                        <span class="text-[var(--color-faded-text)]">Crafted </span>
+                        
+                        <span class="text-[var(--color-faded-text)]">by</span>
+                        <a href="https://www.websiteforge.au" target="_blank" rel="noopener noreferrer" class="text-[var(--color-wf)] hover:text-[var(--color-off-white)] font-medium transition-colors">Websiteforge</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
@@ -560,6 +610,18 @@ The business has become a go-to for many Everton Park residents who value a pers
                 } else {
                     header.classList.remove('bg-[var(--color-charcoal-dark)]', 'shadow-lg');
                 }
+            });
+
+            // Add rotation animation to social icons
+            const socialIcons = document.querySelectorAll('.social-icon');
+            socialIcons.forEach(icon => {
+                icon.addEventListener('mouseenter', () => {
+                    icon.classList.add('rotating');
+                });
+                
+                icon.addEventListener('animationend', () => {
+                    icon.classList.remove('rotating');
+                });
             });
         });
     </script>
