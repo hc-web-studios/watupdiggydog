@@ -250,6 +250,68 @@
                 </div>
             </button>
         </nav>
+
+        <!-- Mobile Navigation Menu (full screen overlay) -->
+        <div id="mobile-menu" class="fixed inset-0 bg-[var(--color-charcoal-dark)] bg-opacity-95 backdrop-blur-sm z-50 opacity-0 invisible transition-all duration-300 ease-in-out md:hidden">
+            <div class="flex flex-col h-full">
+                <!-- Close button -->
+                <div class="flex justify-end p-6">
+                    <button id="mobile-menu-close" class="p-2 rounded-full hover:bg-[var(--color-charcoal-light)] transition-colors">
+                        <svg class="w-6 h-6 text-[var(--color-off-white)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Menu items -->
+                <div class="flex-1 flex flex-col justify-center px-6 -mt-16">
+                    <div class="space-y-4">
+                        <a href="index.html" class="block py-4 px-6 rounded-lg text-lg font-semibold hover:bg-[var(--color-charcoal-light)] transition-all transform hover:scale-105" data-nav-link>Home</a>
+                        
+                        <!-- About dropdown for mobile -->
+                        <div class="mobile-dropdown">
+                            <button class="mobile-dropdown-btn w-full text-left py-4 px-6 rounded-lg text-lg font-semibold hover:bg-[var(--color-charcoal-light)] transition-all flex items-center justify-between transform hover:scale-105">
+                                <span>About</span>
+                                <svg class="mobile-dropdown-arrow w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="mobile-dropdown-content hidden pl-6 mt-2 space-y-2">
+                                <a href="our story.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Our Story</a>
+                                <a href="products.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Products We Use</a>
+                            </div>
+                        </div>
+
+                        <!-- Services dropdown for mobile -->
+                        <div class="mobile-dropdown">
+                            <button class="mobile-dropdown-btn w-full text-left py-4 px-6 rounded-lg text-lg font-semibold hover:bg-[var(--color-charcoal-light)] transition-all flex items-center justify-between transform hover:scale-105">
+                                <span>Services</span>
+                                <svg class="mobile-dropdown-arrow w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+                            <div class="mobile-dropdown-content hidden pl-6 mt-2 space-y-2">
+                                <a href="service1.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Deshed</a>
+                                <a href="service2.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Deshed bath and towel dry</a>
+                                <a href="service3.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Full Groom</a>
+                                <a href="service4.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Full Groom style cuts</a>
+                                <a href="service5.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Nails</a>
+                                <a href="service6.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Oodles, poodles and doodles</a>
+                                <a href="service7.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Puppy First Groom</a>
+                                <a href="service8.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Senior comfort grooms</a>
+                            </div>
+                        </div>
+
+                        <a href="contact.html" class="block py-4 px-6 rounded-lg text-lg font-semibold hover:bg-[var(--color-charcoal-light)] transition-all transform hover:scale-105" data-nav-link>Contact Us</a>
+                        <a href="services.html" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-4 px-6 rounded-full shadow-lg hover:bg-[#c79c55] transition-all mt-6 block text-center text-lg transform hover:scale-105" data-nav-link>
+                            Book Today
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <main>
         <!-- Hero Section with Background Image -->
         <section id="hero" class="relative overflow-hidden w-full h-80 flex items-center text-center px-6">
@@ -577,15 +639,54 @@
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
             const navLinks = document.querySelectorAll('[data-nav-link]');
             const header = document.querySelector('header');
 
             function toggleMobileMenu() {
-                mobileMenu.classList.toggle('hidden');
-                mobileMenuButton.querySelector('.menu-icon').classList.toggle('open');
+                if (mobileMenu.classList.contains('opacity-0')) {
+                    // Show menu
+                    mobileMenu.classList.remove('opacity-0', 'invisible');
+                    mobileMenu.classList.add('opacity-100', 'visible');
+                    mobileMenuButton.querySelector('.menu-icon').classList.add('open');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                } else {
+                    // Hide menu
+                    mobileMenu.classList.add('opacity-0', 'invisible');
+                    mobileMenu.classList.remove('opacity-100', 'visible');
+                    mobileMenuButton.querySelector('.menu-icon').classList.remove('open');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
             }
 
             mobileMenuButton.addEventListener('click', toggleMobileMenu);
+            mobileMenuClose.addEventListener('click', toggleMobileMenu);
+
+            // Handle mobile dropdown functionality
+            const mobileDropdowns = document.querySelectorAll('.mobile-dropdown');
+            mobileDropdowns.forEach(dropdown => {
+                const btn = dropdown.querySelector('.mobile-dropdown-btn');
+                const content = dropdown.querySelector('.mobile-dropdown-content');
+                const arrow = dropdown.querySelector('.mobile-dropdown-arrow');
+
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Close other dropdowns
+                    mobileDropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            const otherContent = otherDropdown.querySelector('.mobile-dropdown-content');
+                            const otherArrow = otherDropdown.querySelector('.mobile-dropdown-arrow');
+                            otherContent.classList.add('hidden');
+                            otherArrow.classList.remove('rotate-180');
+                        }
+                    });
+
+                    // Toggle current dropdown
+                    content.classList.toggle('hidden');
+                    arrow.classList.toggle('rotate-180');
+                });
+            });
 
             navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
@@ -597,7 +698,8 @@
                         targetElement.scrollIntoView({ behavior: 'smooth' });
                     }
 
-                    if (!mobileMenu.classList.contains('hidden')) {
+                    // Close mobile menu when clicking any link
+                    if (!mobileMenu.classList.contains('opacity-0')) {
                         toggleMobileMenu();
                     }
                 });
