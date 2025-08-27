@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watupdiggydog</title>
+    <link rel="icon" type="image/png" href="./img/brand/favicon.svg">
+    <!-- Fonts from the image: Playfair Display for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define a precise color palette based on the image */
+        :root {
+            --color-charcoal-dark: #1b1916;
+            --color-charcoal-light: #2c2825;
+            --color-gold: #3a5bb4;
+            --color-off-white: #f5f0ec;
+            --color-faded-text: #8c8884;
+            --marquee-duration: 24s; /* adjustable */
+        }
+
+        /* Set base styles for the body */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-charcoal-dark);
+            color: var(--color-off-white);
+            line-height: 1.7;
+        }
+
+        /* Set font for all headings */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Custom scrollbar styling to match the theme */
+        ::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-charcoal-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-gold);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c79c55;
+        }
+
+        /* Hamburger menu animation */
+        .menu-icon span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--color-off-white);
+            margin-bottom: 5px;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .menu-icon.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-icon.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-icon.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Horizontal scroll for project and testimonial sections */
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* for smooth scrolling on iOS */
+            padding-bottom: 1rem;
+        }
+        .horizontal-scroll > * {
+            flex-shrink: 0;
+            margin-right: 2rem;
+        }
+
+        /* Subtle overlay on service cards */
+        .service-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+            transition: background 0.3s ease-in-out;
+        }
+        .service-overlay:hover {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3));
+        }
+
+        /* Image hover effect */
+        .img-hover-scale img {
+            transition: transform 0.3s ease-in-out;
+        }
+        .img-hover-scale:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Styles for the new navigation header */
+        .nav-link.active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-gold);
+            margin-top: 5px;
+            animation: slide-in 0.3s forwards;
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        /* Marquee slider for projects (infinite, no scrollbar) */
+        .marquee {
+            overflow: hidden; /* removes scrollbar */
+        }
+        .marquee.full-bleed {
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            width: 100vw; /* span the full viewport width */
+            box-sizing: border-box;
+            padding-left: 1.5rem; /* keep same horizontal gutter as the page */
+            padding-right: 1.5rem;
+        }
+        .marquee__inner {
+            display: flex;
+            gap: 2rem;
+            align-items: stretch;
+            /* ensure the inner width is large enough — we'll duplicate slides for a seamless loop */
+        }
+        .marquee__inner > * {
+            flex: 0 0 auto;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0%); }
+            to   { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee var(--marquee-duration) linear infinite;
+        }
+        /* respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-marquee { animation: none; }
+        }
+    </style>
+</head>
+<body class="bg-[var(--color-charcoal-dark)] text-[var(--color-off-white)]">
+
+    <!-- Header & Navigation - UPDATED to match new image -->
+    <header class="sticky top-0 z-50 bg-[var(--color-charcoal-dark)] transition-colors duration-300">
+        <nav class="container mx-auto px-6 py-8 flex items-center justify-between">
+            <!-- Logo on the left side, with an updated look -->
+            <a href="#" class="flex-shrink-0 flex items-center space-x-2">
+                <!-- SVG Icon (simple placeholder for the logo) -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#3a5bb4" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 18C10.66 18 9.61 16.95 9.61 15.61C9.61 14.27 10.66 13.22 12 13.22C13.34 13.22 14.39 14.27 14.39 15.61C14.39 16.95 13.34 18 12 18ZM7.56 12.18C6.22 12.18 5.17 11.13 5.17 9.79C5.17 8.45 6.22 7.4 7.56 7.4C8.9 7.4 9.95 8.45 9.95 9.79C9.95 11.13 8.9 12.18 7.56 12.18ZM16.44 12.18C15.1 12.18 14.05 11.13 14.05 9.79C14.05 8.45 15.1 7.4 16.44 7.4C17.78 7.4 18.83 8.45 18.83 9.79C18.83 11.13 17.78 12.18 16.44 12.18ZM6.89 17.58C5.55 17.58 4.5 16.53 4.5 15.19C4.5 13.85 5.55 12.8 6.89 12.8C8.23 12.8 9.28 13.85 9.28 15.19C9.28 16.53 8.23 17.58 6.89 17.58ZM17.11 17.58C15.77 17.58 14.72 16.53 14.72 15.19C14.72 13.85 15.77 12.8 17.11 12.8C18.45 12.8 19.5 13.85 19.5 15.19C19.5 16.53 18.45 17.58 17.11 17.58Z"/>
+</svg>
+                </svg>
+                <div class="logo-wrapper flex flex-col items-start">
+                    <div class="text-2xl font-bold font-serif leading-none">Watupdiggydog</div>
+                    <div class="text-sm text-[var(--color-faded-text)] -mt-1 tracking-wider uppercase"></div>
+                </div>
+            </a>
+
+            <!-- Navigation Links in the center -->
+            <div class="hidden md:flex flex-1 items-center justify-center space-x-12">
+                <a href="index.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors nav-link active">Home</a>
+                <div class="relative group">
+                    <a href="" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
+                        <span>About</span>
+                        <svg class="w-4 h-4 text-white group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+
+                    <!-- Dropdown menu -->
+                    <div class="absolute left-0 mt-3 w-48 bg-[var(--color-charcoal-light)] rounded-lg shadow-lg py-2 transform opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all z-50">
+                        <a href="our story.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Our Story</a>
+                        <a href="products.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Products We Use</a>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <a href="services.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
+                        <span>Our Services</span>
+                        <svg class="w-4 h-4 text-white group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+                </div>
+                <a href="contact.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors">Contact Us</a>
+            </div>
+
+            <!-- CTA Button on the right -->
+            <div class="hidden md:block flex-shrink-0">
+                <a href="#" class="border border-[var(--color-gold)] text-[var(--color-gold)] font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[var(--color-gold)] hover:text-[var(--color-charcoal-dark)] transition-colors">
+                    Book Today
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </nav>
+
+        <!-- Mobile Navigation Menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-charcoal-light)] py-4 px-6 shadow-inner">
+            <a href="#hero" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Home</a>
+            <a href="#services" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Our Services</a>
+            <a href="#" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>News</a>
+            <a href="#contact" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Contact Us</a>
+            <a href="#" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-4 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors mt-4 block text-center" data-nav-link>
+                Buy Templates
+            </a>
+        </div>
+    </header>
+
+    <main>
+                <section id="hero" class="relative w-full">
+            <img src="./img/misc/story.jpg" alt="banner background" class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none z-0">
+            <div class="relative z-10 container mx-auto px-6 py-6">
+                <div class="flex items-center justify-center h-16 md:h-20">
+                    <h1 class="text-4xl md:text-5xl font-serif font-bold text-center">Contact Us</h1>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section / CTA -->
+        <section id="contact" class="relative py-24 bg-[var(--color-charcoal-light)]">
+            <div class="container mx-auto px-6">
+                <!-- Unified contact card -->
+                <div class="bg-gradient-to-b from-black/60 via-black/40 to-black/30 p-8 rounded-3xl shadow-2xl ring-1 ring-black/40">
+                    <div class="flex items-start gap-6 lg:gap-12 mb-6">
+                        <div class="w-1 h-12 bg-[var(--color-gold)] rounded"></div>
+                        <div>
+                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Contact</div>
+                            <h2 class="text-3xl font-serif font-bold text-[var(--color-off-white)]">How can we help?</h2>
+                            <p class="text-[var(--color-faded-text)] mt-2 max-w-2xl">Questions about grooming, bookings or products? Use the form or the contact details — all in one place.</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+                        <!-- Form (spans two columns on large screens) -->
+                        <div class="lg:col-span-2">
+                            <form id="contact-form" action="https://submit-form.com/YOUR_FORM_ID" method="POST" class="space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <label class="block w-full">
+                                        <span class="text-xs text-[var(--color-faded-text)]">Full name</span>
+                                        <input name="name" required class="mt-1 w-full bg-[var(--color-charcoal-light)] border border-black/20 rounded-lg py-3 px-4 text-[var(--color-off-white)] placeholder:text-[var(--color-faded-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]" placeholder="Jane Customer">
+                                    </label>
+
+                                    <label class="block w-full">
+                                        <span class="text-xs text-[var(--color-faded-text)]">Phone</span>
+                                        <input name="phone" class="mt-1 w-full bg-[var(--color-charcoal-light)] border border-black/20 rounded-lg py-3 px-4 text-[var(--color-off-white)] placeholder:text-[var(--color-faded-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]" placeholder="(07) 0000 0000">
+                                    </label>
+                                </div>
+
+                                <label class="block">
+                                    <span class="text-xs text-[var(--color-faded-text)]">Email</span>
+                                    <input type="email" name="email" required class="mt-1 w-full bg-[var(--color-charcoal-light)] border border-black/20 rounded-lg py-3 px-4 text-[var(--color-off-white)] placeholder:text-[var(--color-faded-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]" placeholder="you@domain.com">
+                                </label>
+
+                                <label class="block">
+                                    <span class="text-xs text-[var(--color-faded-text)]">Message</span>
+                                    <textarea name="message" rows="5" required class="mt-1 w-full bg-[var(--color-charcoal-light)] border border-black/20 rounded-lg py-3 px-4 text-[var(--color-off-white)] placeholder:text-[var(--color-faded-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]" placeholder="How can we help?"></textarea>
+                                </label>
+
+                                <input type="hidden" name="_subject" value="New contact from website">
+
+                                <div class="flex items-center gap-4">
+                                    <button id="submit-btn" type="submit" class="inline-flex items-center gap-3 bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-semibold py-3 px-6 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors" aria-live="polite">
+                                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11L21 3L14 21L11 14L3 11Z" fill="currentColor"/></svg>
+                                        Send Message
+                                    </button>
+
+                                    <div id="form-message" class="text-sm text-[var(--color-faded-text)] transition-colors" role="status" aria-live="polite"></div>
+                                </div>
+                            </form>
+
+                            <div class="mt-6 text-xs text-[var(--color-faded-text)]">
+                                <strong class="text-[var(--color-off-white)]">Prefer email?</strong> <a href="mailto:info@watupdiggydog.com" class="underline">info@watupdiggydog.com</a>
+                            </div>
+                        </div>
+
+                        <!-- Details column (single merged card) -->
+                        <div class="p-6 rounded-2xl bg-[var(--color-charcoal-dark)] ring-1 ring-black/30">
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <div class="text-sm font-semibold uppercase text-[var(--color-gold)]">Details</div>
+                                    <h4 class="text-lg font-bold text-[var(--color-off-white)] mt-2">Watupdiggydog Dog Wash & Groomer</h4>
+                                </div>
+                                <img src="./img/brand/logo.png" alt="logo" class="w-16 h-16 object-contain opacity-95 rounded-md">
+                            </div>
+
+                            <ul class="space-y-4 text-[var(--color-faded-text)] mb-6">
+                                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-[var(--color-gold)] mt-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7z" fill="currentColor"/></svg><div><span class="block text-[var(--color-off-white)] font-medium">Address</span><span>199 Flockton Street, Everton Park QLD</span></div></li>
+                                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-[var(--color-gold)] mt-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 5.5C3 4.1 4.1 3 5.5 3h13c1.4 0 2.5 1.1 2.5 2.5V18.5C21 19.9 19.9 21 18.5 21h-13C4.1 21 3 19.9 3 18.5V5.5z" fill="currentColor"/></svg><div><span class="block text-[var(--color-off-white)] font-medium">Email</span><a href="mailto:info@watupdiggydog.com">info@watupdiggydog.com</a></div></li>
+                                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-[var(--color-gold)] mt-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 01.87-.27c.95.2 2 .31 3.14.31a1 1 0 011 1v3.5a1 1 0 01-1 1C9.85 21.71 2.29 14.15 2.29 4a1 1 0 011-1H6.8a1 1 0 011 1c0 1.14.11 2.19.31 3.14.06.25.02.52-.27.87l-2.23 2.78z" fill="currentColor"/></svg><div><span class="block text-[var(--color-off-white)] font-medium">Phone</span><a href="tel:+61700000000">(07) 0000 0000</a></div></li>
+                                <li class="flex items-start gap-3"><svg class="w-5 h-5 text-[var(--color-gold)] mt-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><span class="block text-[var(--color-off-white)] font-medium">ABN</span>12 345 678 901</div></li>
+                            </ul>
+
+                            <div class="mb-4 text-[var(--color-faded-text)]">
+                                <div class="font-medium text-[var(--color-off-white)] mb-2">Opening hours</div>
+                                <div>Mon - Fri: 8:00am - 5:00pm</div>
+                                <div>Sat: 8:30am - 1:00pm</div>
+                                <div>Sun: Closed</div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-3">
+                                <a href="tel:+61700000000" class="inline-flex items-center gap-2 border border-[var(--color-gold)] text-[var(--color-gold)] px-4 py-2 rounded-full hover:bg-[var(--color-gold)] hover:text-[var(--color-charcoal-dark)] transition-colors">Call us</a>
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=199+Flockton+Street+Everton+Park+QLD" target="_blank" class="inline-flex items-center gap-2 bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] px-4 py-2 rounded-full hover:bg-[#c79c55] transition-colors">Get directions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embed (full width under the form) -->
+                <div class="mt-12 container mx-auto px-0">
+                    <iframe src="https://maps.google.com/maps?q=199%20Flockton%20Street%20Everton%20Park%20QLD&t=&z=15&ie=UTF8&iwloc=&output=embed" class="w-full h-64 md:h-96 border-0 rounded-2xl" allowfullscreen loading="lazy"></iframe>
+                </div>
+
+                <script>
+                    // Enhanced JS handler for the form: shows nicer messages and disables button while sending
+                    (function(){
+                        const form = document.getElementById('contact-form');
+                        const msg = document.getElementById('form-message');
+                        const btn = document.getElementById('submit-btn');
+                        if (!form) return;
+
+                        form.addEventListener('submit', async (e) => {
+                            e.preventDefault();
+                            msg.textContent = '';
+                            btn.setAttribute('aria-busy', 'true');
+                            btn.disabled = true;
+
+                            const originalLabel = btn.innerHTML;
+                            btn.innerHTML = '<svg class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 100 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Sending';
+
+                            const action = form.action;
+                            const fd = new FormData(form);
+
+                            try {
+                                const res = await fetch(action, { method: 'POST', body: fd });
+                                if (res.ok) {
+                                    form.reset();
+                                    msg.textContent = 'Thanks — we received your message.';
+                                    msg.classList.remove('text-[var(--color-faded-text)]');
+                                    msg.classList.add('text-green-400');
+                                } else {
+                                    throw new Error('Network response not ok');
+                                }
+                            } catch (err) {
+                                msg.textContent = 'Sorry — message not sent. Please email us at info@watupdiggydog.com';
+                                msg.classList.remove('text-[var(--color-faded-text)]');
+                                msg.classList.add('text-red-400');
+                            } finally {
+                                if (btn) {
+                                    btn.disabled = false;
+                                    btn.removeAttribute('aria-busy');
+                                    btn.innerHTML = originalLabel;
+                                }
+                            }
+                        });
+                    })();
+                </script>
+            </div>
+        </section>
+
+        <script>
+            // Simple JS handler to POST to Formspark (submit-form.com) and show a message without leaving the page.
+            (function(){
+                const form = document.getElementById('contact-form');
+                const msg = document.getElementById('form-message');
+                if (!form) return;
+
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    msg.textContent = 'Sending...';
+                    const action = form.action;
+                    const fd = new FormData(form);
+
+                    try {
+                        const res = await fetch(action, { method: 'POST', body: fd });
+                        if (res.ok) {
+                            form.reset();
+                            msg.textContent = 'Thanks — we received your message.';
+                            msg.classList.remove('text-[var(--color-faded-text)]');
+                            msg.classList.add('text-green-400');
+                        } else {
+                            throw new Error('Network response not ok');
+                        }
+                    } catch (err) {
+                        msg.textContent = 'Sorry — message not sent. Please email us directly.';
+                        msg.classList.remove('text-[var(--color-faded-text)]');
+                        msg.classList.add('text-red-400');
+                    }
+                });
+            })();
+        </script>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[var(--color-charcoal-dark)] py-12 border-t border-[var(--color-charcoal-light)]">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-[var(--color-faded-text)]">
+                <a href="#" class="font-semibold text-[var(--color-gold)] text-xl font-serif">ContractoR</a>
+                <p>&copy; 2023 All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-[var(--color-off-white)] transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-[var(--color-off-white)] transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for smooth scrolling and mobile menu functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('[data-nav-link]');
+            const header = document.querySelector('header');
+
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.querySelector('.menu-icon').classList.toggle('open');
+            }
+
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const targetId = e.target.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            // Make header transparent on hero section and opaque on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-[var(--color-charcoal-dark)]', 'shadow-lg');
+                } else {
+                    header.classList.remove('bg-[var(--color-charcoal-dark)]', 'shadow-lg');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

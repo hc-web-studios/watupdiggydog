@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watupdiggydog</title>
+    <link rel="icon" type="image/png" href="./img/brand/favicon.svg">
+    <!-- Fonts from the image: Playfair Display for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define a precise color palette based on the image */
+        :root {
+            --color-charcoal-dark: #1b1916;
+            --color-charcoal-light: #2c2825;
+            --color-gold: #3a5bb4;
+            --color-off-white: #f5f0ec;
+            --color-faded-text: #8c8884;
+            --marquee-duration: 24s; /* adjustable */
+        }
+
+        /* Set base styles for the body */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-charcoal-dark);
+            color: var(--color-off-white);
+            line-height: 1.7;
+        }
+
+        /* Set font for all headings */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Custom scrollbar styling to match the theme */
+        ::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-charcoal-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-gold);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c79c55;
+        }
+
+        /* Hamburger menu animation */
+        .menu-icon span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--color-off-white);
+            margin-bottom: 5px;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .menu-icon.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-icon.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-icon.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Horizontal scroll for project and testimonial sections */
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* for smooth scrolling on iOS */
+            padding-bottom: 1rem;
+        }
+        .horizontal-scroll > * {
+            flex-shrink: 0;
+            margin-right: 2rem;
+        }
+
+        /* Subtle overlay on service cards */
+        .service-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+            transition: background 0.3s ease-in-out;
+        }
+        .service-overlay:hover {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3));
+        }
+
+        /* Image hover effect */
+        .img-hover-scale img {
+            transition: transform 0.3s ease-in-out;
+        }
+        .img-hover-scale:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Styles for the new navigation header */
+        .nav-link.active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-gold);
+            margin-top: 5px;
+            animation: slide-in 0.3s forwards;
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        /* Marquee slider for projects (infinite, no scrollbar) */
+        .marquee {
+            overflow: hidden; /* removes scrollbar */
+        }
+        .marquee.full-bleed {
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            width: 100vw; /* span the full viewport width */
+            box-sizing: border-box;
+            padding-left: 1.5rem; /* keep same horizontal gutter as the page */
+            padding-right: 1.5rem;
+        }
+        .marquee__inner {
+            display: flex;
+            gap: 2rem;
+            align-items: stretch;
+            /* ensure the inner width is large enough — we'll duplicate slides for a seamless loop */
+        }
+        .marquee__inner > * {
+            flex: 0 0 auto;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0%); }
+            to   { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee var(--marquee-duration) linear infinite;
+        }
+        /* respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-marquee { animation: none; }
+        }
+    </style>
+</head>
+<body class="bg-[var(--color-charcoal-dark)] text-[var(--color-off-white)]">
+
+    <!-- Header & Navigation - UPDATED to match new image -->
+    <header class="sticky top-0 z-50 bg-[var(--color-charcoal-dark)] transition-colors duration-300">
+        <nav class="container mx-auto px-6 py-8 flex items-center justify-between">
+            <!-- Logo on the left side, with an updated look -->
+            <a href="#" class="flex-shrink-0 flex items-center space-x-2">
+                <!-- SVG Icon (simple placeholder for the logo) -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#3a5bb4" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 18C10.66 18 9.61 16.95 9.61 15.61C9.61 14.27 10.66 13.22 12 13.22C13.34 13.22 14.39 14.27 14.39 15.61C14.39 16.95 13.34 18 12 18ZM7.56 12.18C6.22 12.18 5.17 11.13 5.17 9.79C5.17 8.45 6.22 7.4 7.56 7.4C8.9 7.4 9.95 8.45 9.95 9.79C9.95 11.13 8.9 12.18 7.56 12.18ZM16.44 12.18C15.1 12.18 14.05 11.13 14.05 9.79C14.05 8.45 15.1 7.4 16.44 7.4C17.78 7.4 18.83 8.45 18.83 9.79C18.83 11.13 17.78 12.18 16.44 12.18ZM6.89 17.58C5.55 17.58 4.5 16.53 4.5 15.19C4.5 13.85 5.55 12.8 6.89 12.8C8.23 12.8 9.28 13.85 9.28 15.19C9.28 16.53 8.23 17.58 6.89 17.58ZM17.11 17.58C15.77 17.58 14.72 16.53 14.72 15.19C14.72 13.85 15.77 12.8 17.11 12.8C18.45 12.8 19.5 13.85 19.5 15.19C19.5 16.53 18.45 17.58 17.11 17.58Z"/>
+</svg>
+                </svg>
+                <div class="logo-wrapper flex flex-col items-start">
+                    <div class="text-2xl font-bold font-serif leading-none">Watupdiggydog</div>
+                    <div class="text-sm text-[var(--color-faded-text)] -mt-1 tracking-wider uppercase"></div>
+                </div>
+            </a>
+
+            <!-- Navigation Links in the center -->
+            <div class="hidden md:flex flex-1 items-center justify-center space-x-12">
+                <a href="index.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors">Home</a>
+                <div class="relative group nav-link active">
+                    <a href="#about" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
+                        <span>About</span>
+                        <svg class="w-4 h-4 text-white group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+
+                    <!-- Dropdown menu -->
+                    <div class="absolute left-0 mt-3 w-48 bg-[var(--color-charcoal-light)] rounded-lg shadow-lg py-2 transform opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all z-50">
+                        <a href="our story.html" class="nav-link active block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Our Story</a>
+                        <a href="products.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Products We Use</a>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <a href="services.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
+                        <span>Our Services</span>
+                        <svg class="w-4 h-4 text-white group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+                </div>
+                <a href="contact.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors">Contact Us</a>
+            </div>
+
+            <!-- CTA Button on the right -->
+            <div class="hidden md:block flex-shrink-0">
+                <a href="#" class="border border-[var(--color-gold)] text-[var(--color-gold)] font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[var(--color-gold)] hover:text-[var(--color-charcoal-dark)] transition-colors">
+                    Book Today
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </nav>
+
+        <!-- Mobile Navigation Menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-charcoal-light)] py-4 px-6 shadow-inner">
+            <a href="#hero" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Home</a>
+            <a href="#services" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Our Services</a>
+            <a href="#" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>News</a>
+            <a href="#contact" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Contact Us</a>
+            <a href="#" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-4 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors mt-4 block text-center" data-nav-link>
+                Buy Templates
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section with Background Image -->
+        <!-- Slimline Hero (centered heading with slim background image) -->
+        <section id="hero" class="relative w-full">
+            <img src="./img/misc/story.jpg" alt="banner background" class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none z-0">
+            <div class="relative z-10 container mx-auto px-6 py-6">
+                <div class="flex items-center justify-center h-16 md:h-20">
+                    <h1 class="text-4xl md:text-5xl font-serif font-bold text-center">Our Story</h1>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section with Image on Right -->
+        <section id="about" class="py-24 bg-[var(--color-charcoal-dark)]">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <!-- Text Block -->
+                    <div>
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-12 h-px bg-[var(--color-gold)]"></div>
+                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">About Us</div>
+                        </div>
+                        <h2 class="text-4xl font-serif font-bold mb-8">
+                            Our Story
+                        </h2>
+                        <p class="text-[var(--color-faded-text)] mb-8 text-lg">
+                            Based in the heart of Everton Park, Watupdiggydog Dog Wash and Groomer is a local business dedicated to keeping your canine companions looking and feeling their best. This friendly, neighbourhood establishment offers a range of services designed to pamper your pooch, from a simple wash and dry to full-service grooming sessions.
+<br>
+<br>
+Watupdiggydog prides itself on its caring and professional approach. The team understands that every dog is unique, and they work to create a comfortable and stress-free experience for each furry client. Whether your dog needs a quick tidy-up or a breed-specific haircut, they use high-quality products and gentle techniques to ensure a positive visit.
+
+<br>
+<br>
+The business has become a go-to for many Everton Park residents who value a personal touch and reliable service. With a focus on community and canine welfare, Watupdiggydog Dog Wash and Groomer is more than just a place to get your dog cleaned—it's a trusted local spot where four-legged friends are treated like family.
+                        </p>
+                        <a href="#" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-8 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors">
+                            Our Services
+                        </a>
+                    </div>
+                    <!-- Image Block -->
+                    <div>
+                        <img src="./img/brand/logo.png" alt="About Us" class="w-full rounded-2xl ">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-[var(--color-charcoal-dark)] py-12 border-t border-[var(--color-charcoal-light)]">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-[var(--color-faded-text)]">
+                <a href="#" class="font-semibold text-[var(--color-gold)] text-xl font-serif">ContractoR</a>
+                <p>&copy; 2023 All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-[var(--color-off-white)] transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-[var(--color-off-white)] transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for smooth scrolling and mobile menu functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('[data-nav-link]');
+            const header = document.querySelector('header');
+
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.querySelector('.menu-icon').classList.toggle('open');
+            }
+
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const targetId = e.target.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            // Make header transparent on hero section and opaque on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-[var(--color-charcoal-dark)]', 'shadow-lg');
+                } else {
+                    header.classList.remove('bg-[var(--color-charcoal-dark)]', 'shadow-lg');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

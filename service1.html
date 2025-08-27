@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watupdiggydog</title>
+    <link rel="icon" type="image/png" href="./img/brand/favicon.svg">
+    <!-- Fonts from the image: Playfair Display for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS from CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define a precise color palette based on the image */
+        :root {
+            --color-charcoal-dark: #1b1916;
+            --color-charcoal-light: #2c2825;
+            --color-gold: #3a5bb4;
+            --color-off-white: #f5f0ec;
+            --color-faded-text: #8c8884;
+            --marquee-duration: 24s; /* adjustable */
+        }
+
+        /* Set base styles for the body */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-charcoal-dark);
+            color: var(--color-off-white);
+            line-height: 1.7;
+        }
+
+        /* Set font for all headings */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Custom scrollbar styling to match the theme */
+        ::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-charcoal-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-gold);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c79c55;
+        }
+
+        /* Hamburger menu animation */
+        .menu-icon span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background-color: var(--color-off-white);
+            margin-bottom: 5px;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+        .menu-icon.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-icon.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-icon.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Horizontal scroll for project and testimonial sections */
+        .horizontal-scroll {
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* for smooth scrolling on iOS */
+            padding-bottom: 1rem;
+        }
+        .horizontal-scroll > * {
+            flex-shrink: 0;
+            margin-right: 2rem;
+        }
+
+        /* Subtle overlay on service cards */
+        .service-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+            transition: background 0.3s ease-in-out;
+        }
+        .service-overlay:hover {
+            background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3));
+        }
+
+        /* Image hover effect */
+        .img-hover-scale img {
+            transition: transform 0.3s ease-in-out;
+        }
+        .img-hover-scale:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Styles for the new navigation header */
+        .nav-link.active::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-gold);
+            margin-top: 5px;
+            animation: slide-in 0.3s forwards;
+        }
+
+        @keyframes slide-in {
+            from {
+                transform: scaleX(0);
+            }
+            to {
+                transform: scaleX(1);
+            }
+        }
+
+        /* Marquee slider for projects (infinite, no scrollbar) */
+        .marquee {
+            overflow: hidden; /* removes scrollbar */
+        }
+        .marquee.full-bleed {
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            width: 100vw; /* span the full viewport width */
+            box-sizing: border-box;
+            padding-left: 1.5rem; /* keep same horizontal gutter as the page */
+            padding-right: 1.5rem;
+        }
+        .marquee__inner {
+            display: flex;
+            gap: 2rem;
+            align-items: stretch;
+            /* ensure the inner width is large enough — we'll duplicate slides for a seamless loop */
+        }
+        .marquee__inner > * {
+            flex: 0 0 auto;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0%); }
+            to   { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            animation: marquee var(--marquee-duration) linear infinite;
+        }
+        /* respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            .animate-marquee { animation: none; }
+        }
+    </style>
+    <style>
+        /* TidyCal — simplified: keep a tidy container and a styled button */
+        .tidycal-container { max-width: 980px; margin: 0 auto; padding: 0 0.5rem; }
+        .tidycal-cta { display:inline-flex; align-items:center; gap:0.75rem; background:var(--color-gold); color:var(--color-charcoal-dark); font-weight:700; padding:0.75rem 1.25rem; border-radius:9999px; box-shadow:0 6px 18px rgba(0,0,0,0.35); }
+        .tidycal-cta:hover { background:#c79c55; }
+        .tidycal-note { color:var(--color-faded-text); font-size:0.95rem; }
+        @media (max-width:768px) {
+            .tidycal-container { padding: 0 1rem; }
+            .tidycal-cta { width:100%; justify-content:center; }
+        }
+        /* Modal styles for desktop booking (expanded and nicer backdrop) */
+        .tidycal-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.65); display: none; align-items: center; justify-content: center; z-index: 80; padding: 2rem; }
+        .tidycal-modal.open { display: flex; }
+        /* Keep modal content fixed and exactly centered to prevent any browser auto-scrolling */
+        .tidycal-modal-content { position: fixed; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0); will-change: transform; width: 92vw; max-width: 1100px; height: 85vh; background: var(--color-charcoal-light); border-radius: 14px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.03); transform-origin: center center; }
+
+        /* Ensure page doesn't overscroll or react to touch while modal open */
+        html.modal-open, body.modal-open { overscroll-behavior: none; touch-action: none; }
+
+        .tidycal-modal-header { display:flex; justify-content:space-between; align-items:center; padding:0.85rem 1rem; border-bottom:1px solid rgba(255,255,255,0.04); }
+        .tidycal-modal-body { padding:0; height: calc(85vh - 56px); } /* header ~56px */
+        .tidycal-close { background:transparent; border:0; color:var(--color-off-white); font-size:1.1rem; padding:0.5rem; cursor:pointer; }
+        /* Background scale/zoom-out effect when modal open */
+        body.modal-open { overflow: hidden; }
+        body.modal-open header,
+        body.modal-open main,
+        body.modal-open footer { transition: transform 220ms ease, filter 220ms ease; transform-origin: center top; transform: scale(0.992); filter: blur(0.3px) brightness(0.96); }
+        /* Mobile tweaks: use full screen modal with no rounded corners */
+        @media (max-width:768px) {
+            .tidycal-modal { padding: 0; }
+            .tidycal-modal-content { width: 100%; max-width: 100%; height: 100%; border-radius: 0; }
+            .tidycal-modal-body { height: calc(100vh - 56px); }
+        }
+    </style>
+    <style>
+        /* Extra: ensure overlay blocks touch/mouse from background when open */
+        .tidycal-modal { -webkit-overflow-scrolling: touch; }
+        .tidycal-modal.open { pointer-events: auto; }
+        .tidycal-modal:not(.open) { pointer-events: none; }
+    </style>
+</head>
+<body class="bg-[var(--color-charcoal-dark)] text-[var(--color-off-white)]">
+
+    <!-- Header & Navigation - UPDATED to match new image -->
+    <header class="sticky top-0 z-50 bg-[var(--color-charcoal-dark)] transition-colors duration-300">
+        <nav class="container mx-auto px-6 py-8 flex items-center justify-between">
+            <!-- Logo on the left side, with an updated look -->
+            <a href="#" class="flex-shrink-0 flex items-center space-x-2">
+                <!-- SVG Icon (simple placeholder for the logo) -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#3a5bb4" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 18C10.66 18 9.61 16.95 9.61 15.61C9.61 14.27 10.66 13.22 12 13.22C13.34 13.22 14.39 14.27 14.39 15.61C14.39 16.95 13.34 18 12 18ZM7.56 12.18C6.22 12.18 5.17 11.13 5.17 9.79C5.17 8.45 6.22 7.4 7.56 7.4C8.9 7.4 9.95 8.45 9.95 9.79C9.95 11.13 8.9 12.18 7.56 12.18ZM16.44 12.18C15.1 12.18 14.05 11.13 14.05 9.79C14.05 8.45 15.1 7.4 16.44 7.4C17.78 7.4 18.83 8.45 18.83 9.79C18.83 11.13 17.78 12.18 16.44 12.18ZM6.89 17.58C5.55 17.58 4.5 16.53 4.5 15.19C4.5 13.85 5.55 12.8 6.89 12.8C8.23 12.8 9.28 13.85 9.28 15.19C9.28 16.53 8.23 17.58 6.89 17.58ZM17.11 17.58C15.77 17.58 14.72 16.53 14.72 15.19C14.72 13.85 15.77 12.8 17.11 12.8C18.45 12.8 19.5 13.85 19.5 15.19C19.5 16.53 18.45 17.58 17.11 17.58Z"/>
+</svg>
+                </svg>
+                <div class="logo-wrapper flex flex-col items-start">
+                    <div class="text-2xl font-bold font-serif leading-none">Watupdiggydog</div>
+                    <div class="text-sm text-[var(--color-faded-text)] -mt-1 tracking-wider uppercase"></div>
+                </div>
+            </a>
+
+            <!-- Navigation Links in the center -->
+            <div class="hidden md:flex flex-1 items-center justify-center space-x-12">
+                <a href="index.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors nav-link active">Home</a>
+                <div class="relative group">
+                    <a href="" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
+                        <span>About</span>
+                        <svg class="w-4 h-4 text-white group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+
+                    <!-- Dropdown menu -->
+                    <div class="absolute left-0 mt-3 w-48 bg-[var(--color-charcoal-light)] rounded-lg shadow-lg py-2 transform opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all z-50">
+                        <a href="our story.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Our Story</a>
+                        <a href="products.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Products We Use</a>
+                    </div>
+                </div>
+
+                 <div class="relative group">
+                    <a href="services.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
+                        <span>Services</span>
+                        <svg class="w-4 h-4 text-white group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+
+                    <!-- Dropdown menu -->
+                    <div class="absolute left-0 mt-3 w-48 bg-[var(--color-charcoal-light)] rounded-lg shadow-lg py-2 transform opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all z-50">
+                        <a href="service1.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Full Groom</a>
+                        <a href="products.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Products We Use</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors">Contact Us</a>
+            </div>
+
+            <!-- CTA Button on the right -->
+            <div class="hidden md:block flex-shrink-0">
+                <a href="#" class="border border-[var(--color-gold)] text-[var(--color-gold)] font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[var(--color-gold)] hover:text-[var(--color-charcoal-dark)] transition-colors">
+                    Book Today
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-gold)]">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </nav>
+
+        <!-- Mobile Navigation Menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[var(--color-charcoal-light)] py-4 px-6 shadow-inner">
+            <a href="#hero" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Home</a>
+            <a href="#services" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Our Services</a>
+            <a href="#" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>News</a>
+            <a href="#contact" class="block py-3 px-4 rounded-lg text-sm font-semibold hover:bg-[var(--color-charcoal-dark)] transition-colors" data-nav-link>Contact Us</a>
+            <a href="#" class="bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-4 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors mt-4 block text-center" data-nav-link>
+                Buy Templates
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Service Hero -->
+        <section id="hero-service" class="relative overflow-hidden w-full h-80 flex items-center text-center px-6">
+            <img src="./img/misc/hero.jpg" alt="Grooming hero" class="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-30">
+            <div class="relative z-10 container mx-auto">
+                <div class="text-sm text-[var(--color-faded-text)] font-medium tracking-widest uppercase mb-3">Our Services</div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold font-serif text-[var(--color-off-white)] leading-tight">Full Groom — <span class="text-[var(--color-gold)]">Pet Cut</span></h1>
+                <p class="mt-4 text-[var(--color-faded-text)] max-w-2xl mx-auto">A comprehensive pet cut including clipping and scissor finishing — a practical, neat style for most companion dogs. Precision trimming to keep your pup comfortable and looking smart.</p>
+                <div class="mt-6 flex justify-center">
+                    <button id="open-tidycal-hero" class="inline-flex items-center gap-3 bg-[var(--color-gold)] text-[var(--color-charcoal-dark)] font-bold py-3 px-6 rounded-full shadow-lg hover:bg-[#c79c55] transition-colors">Book Full Groom</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Service Details & Booking -->
+        <section id="service-details" class="py-16 bg-[var(--color-charcoal-dark)]">
+            <div class="container mx-auto px-6">
+                <!-- make layout single-column so main content fills full width (aside removed) -->
+                <div class="grid gap-10">
+                    <!-- Main description (unchanged) -->
+                    <div class="text-[var(--color-faded-text)]">
+                        <div class="flex items-center space-x-4 mb-6">
+                            <div class="w-12 h-px bg-[var(--color-gold)]"></div>
+                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Service Overview</div>
+                        </div>
+
+                        <h2 class="text-3xl font-serif font-bold text-[var(--color-off-white)] mb-4">What to expect</h2>
+                        <p class="mb-6">Our Full Groom — Pet Cut is tailored for companion dogs and focuses on comfort, hygiene and a tidy finished look. Sessions include a consultation, gentle handling, and finishing touches to suit your dog's lifestyle.</p>
+
+                        <h3 class="text-xl font-semibold text-[var(--color-off-white)] mb-3">What's included</h3>
+                        <ul class="grid sm:grid-cols-2 gap-3 text-[var(--color-faded-text)] mb-6 list-none pl-0">
+                            <li class="flex items-start gap-3"><span class="text-[var(--color-gold)]">•</span> Full body clip or scissor finish</li>
+                            <li class="flex items-start gap-3"><span class="text-[var(--color-gold)]">•</span> Shampoo + conditioning</li>
+                            <li class="flex items-start gap-3"><span class="text-[var(--color-gold)]">•</span> Nail trim & grind</li>
+                            <li class="flex items-start gap-3"><span class="text-[var(--color-gold)]">•</span> Ear check & clean</li>
+                            <li class="flex items-start gap-3"><span class="text-[var(--color-gold)]">•</span> Paw pad tidy</li>
+                            <li class="flex items-start gap-3"><span class="text-[var(--color-gold)]">•</span> Light cologne and finishing brush</li>
+                        </ul>
+
+                        <h3 class="text-xl font-semibold text-[var(--color-off-white)] mb-3">Duration & care</h3>
+                        <p class="text-[var(--color-faded-text)] mb-6">Most full grooms take between 90–150 minutes depending on coat, temperament and any required de-matting. We recommend scheduling morning appointments for calmer experiences.</p>
+
+                      
+                            <!-- Modal (used on desktop/tablet to show the booking iframe without pushing the page length) -->
+                            <div id="tidycal-modal" class="tidycal-modal" role="dialog" aria-modal="true" aria-labelledby="tidycal-modal-title">
+                                <div class="tidycal-modal-content">
+                                    <div class="tidycal-modal-header">
+                                        <div class="text-sm font-semibold text-[var(--color-off-white)]" id="tidycal-modal-title">Book — Full Groom</div>
+                                        <div>
+                                            <button id="tidycal-close" class="tidycal-close" aria-label="Close booking modal">✕</button>
+                                        </div>
+                                    </div>
+                                    <div class="tidycal-modal-body">
+                                        <iframe id="tidycal-iframe-modal" src="https://tidycal.com/hcwebstudios/test?embed=true" title="Book with Watupdiggydog" class="w-full h-full" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Inserted service option cards (uses the same booking button id/class to keep existing behavior) -->
+                        <div id="service-options" class="mt-8">
+                            <h3 class="text-xl font-semibold text-[var(--color-off-white)] mb-4">Service Options</h3>
+
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <!-- Up to 8kg -->
+                                <div class="bg-[var(--color-charcoal-light)] p-5 rounded-lg shadow-inner">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Full Groom - Pet Cut</div>
+                                            <h4 class="text-lg font-bold text-[var(--color-off-white)]">Up to 8kg</h4>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-sm text-[var(--color-faded-text)]">1 hour 30 minutes</div>
+                                            <div class="text-lg font-extrabold font-serif text-[var(--color-off-white)] mt-1">A$120.00</div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 text-[var(--color-faded-text)]">Short body cut with fluffy face and tail or shave nose to tail.</p>
+                                    <p class="mt-2 text-[var(--color-faded-text)]">Coat will not be longer than 6mm (5 blade) unless your dog is on a regular schedule and/or knot free.</p>
+                                    <div class="mt-4">
+                                        <button id="open-tidycal" class="tidycal-cta">Book — Up to 8kg</button>
+                                    </div>
+                                </div>
+
+                                <!-- 9kg - 12kg -->
+                                <div class="bg-[var(--color-charcoal-light)] p-5 rounded-lg shadow-inner">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Full Groom - Pet Cut</div>
+                                            <h4 class="text-lg font-bold text-[var(--color-off-white)]">9kg - 12kg</h4>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-sm text-[var(--color-faded-text)]">1 hour 40 minutes</div>
+                                            <div class="text-lg font-extrabold font-serif text-[var(--color-off-white)] mt-1">A$130.00</div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 text-[var(--color-faded-text)]">Short body cut with fluffy face and tail or shave nose to tail.</p>
+                                    <p class="mt-2 text-[var(--color-faded-text)]">Coat will not be longer than 6mm (5 blade) unless your dog is on a regular schedule and/or knot free.</p>
+                                    <div class="mt-4">
+                                        <button id="open-tidycal" class="tidycal-cta">Book — 9kg–12kg</button>
+                                    </div>
+                                </div>
+
+                                <!-- 13kg - 15kg -->
+                                <div class="bg-[var(--color-charcoal-light)] p-5 rounded-lg shadow-inner">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Full Groom - Pet Cut</div>
+                                            <h4 class="text-lg font-bold text-[var(--color-off-white)]">13kg - 15kg</h4>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-sm text-[var(--color-faded-text)]">1 hour 50 minutes</div>
+                                            <div class="text-lg font-extrabold font-serif text-[var(--color-off-white)] mt-1">A$140.00</div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 text-[var(--color-faded-text)]">Short body cut with fluffy face and tail or shave nose to tail.</p>
+                                    <p class="mt-2 text-[var(--color-faded-text)]">Coat will not be longer than 6mm (5 blade) unless your dog is on a regular schedule and/or knot free.</p>
+                                    <div class="mt-4">
+                                        <button id="open-tidycal" class="tidycal-cta">Book — 13kg–15kg</button>
+                                    </div>
+                                </div>
+
+                                <!-- 16kg - 18kg -->
+                                <div class="bg-[var(--color-charcoal-light)] p-5 rounded-lg shadow-inner">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Full Groom - Pet Cut</div>
+                                            <h4 class="text-lg font-bold text-[var(--color-off-white)]">16kg - 18kg</h4>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-sm text-[var(--color-faded-text)]">2 hours 10 minutes</div>
+                                            <div class="text-lg font-extrabold font-serif text-[var(--color-off-white)] mt-1">A$155.00</div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 text-[var(--color-faded-text)]">Short body cut with fluffy face and tail or shave nose to tail.</p>
+                                    <p class="mt-2 text-[var(--color-faded-text)]">Coat will not be longer than 6mm (5 blade) unless your dog is on a regular schedule and/or knot free.</p>
+                                    <div class="mt-4">
+                                        <button id="open-tidycal" class="tidycal-cta">Book — 16kg–18kg</button>
+                                    </div>
+                                </div>
+
+                                <!-- 19kg - 25kg -->
+                                <div class="bg-[var(--color-charcoal-light)] p-5 rounded-lg shadow-inner">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Full Groom - Pet Cut</div>
+                                            <h4 class="text-lg font-bold text-[var(--color-off-white)]">19kg - 25kg</h4>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-sm text-[var(--color-faded-text)]">2 hours 30 minutes</div>
+                                            <div class="text-lg font-extrabold font-serif text-[var(--color-off-white)] mt-1">A$185.00</div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 text-[var(--color-faded-text)]">Short body cut with fluffy face and tail or shave nose to tail.</p>
+                                    <p class="mt-2 text-[var(--color-faded-text)]">Coat will not be longer than 6mm (5 blade) unless your dog is on a regular schedule and/or knot free.</p>
+                                    <div class="mt-4">
+                                        <button id="open-tidycal" class="tidycal-cta">Book — 19kg–25kg</button>
+                                    </div>
+                                </div>
+
+                                <!-- 26kg - 35kg -->
+                                <div class="bg-[var(--color-charcoal-light)] p-5 rounded-lg shadow-inner">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Full Groom - Pet Cut</div>
+                                            <h4 class="text-lg font-bold text-[var(--color-off-white)]">26kg - 35kg</h4>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-sm text-[var(--color-faded-text)]">2 hours 40 minutes</div>
+                                            <div class="text-lg font-extrabold font-serif text-[var(--color-off-white)] mt-1">A$205.00</div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 text-[var(--color-faded-text)]">Short body cut with fluffy face and tail or shave nose to tail.</p>
+                                    <p class="mt-2 text-[var(--color-faded-text)]">Coat will not be longer than 6mm (5 blade) unless your dog is on a regular schedule and/or knot free.</p>
+                                    <div class="mt-4">
+                                        <button id="open-tidycal" class="tidycal-cta">Book — 26kg–35kg</button>
+                                    </div>
+                                </div>
+
+                                <!-- 36kg - 45kg -->
+                                <div class="bg-[var(--color-charcoal-light)] p-5 rounded-lg shadow-inner">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Full Groom - Pet Cut</div>
+                                            <h4 class="text-lg font-bold text-[var(--color-off-white)]">36kg - 45kg</h4>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-sm text-[var(--color-faded-text)]">2 hours 40 minutes</div>
+                                            <div class="text-lg font-extrabold font-serif text-[var(--color-off-white)] mt-1">A$225.00</div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 text-[var(--color-faded-text)]">Short body cut with fluffy face and tail or shave nose to tail.</p>
+                                    <p class="mt-2 text-[var(--color-faded-text)]">Coat will not be longer than 6mm (5 blade) unless your dog is on a regular schedule and/or knot free.</p>
+                                    <div class="mt-4">
+                                        <button id="open-tidycal" class="tidycal-cta">Book — 36kg–45kg</button>
+                                    </div>
+                                </div>
+
+                                <!-- 46kg - 55kg -->
+                                <div class="bg-[var(--color-charcoal-light)] p-5 rounded-lg shadow-inner">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Full Groom - Pet Cut</div>
+                                            <h4 class="text-lg font-bold text-[var(--color-off-white)]">46kg - 55kg</h4>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-sm text-[var(--color-faded-text)]">3 hours</div>
+                                            <div class="text-lg font-extrabold font-serif text-[var(--color-off-white)] mt-1">A$245.00</div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 text-[var(--color-faded-text)]">Short body cut with fluffy face and tail or shave nose to tail.</p>
+                                    <p class="mt-2 text-[var(--color-faded-text)]">Coat will not be longer than 6mm (5 blade) unless your dog is on a regular schedule and/or knot free.</p>
+                                    <div class="mt-4">
+                                        <button id="open-tidycal" class="tidycal-cta">Book — 46kg–55kg</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+
+                        <div class="bg-[var(--color-charcoal-light)] p-6 rounded-2xl shadow-lg">
+                            <h4 class="text-lg font-semibold text-[var(--color-off-white)] mb-2">Important notes</h4>
+                            <ul class="text-[var(--color-faded-text)] list-disc pl-5">
+                                <li>For heavily matted coats an extra de-matting fee may apply.</li>
+                                <li>Please ensure vaccinations are up to date.</li>
+                                <li>We can recommend a tailored maintenance schedule on request.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- Simple TidyCal fallback anchor (keeps page neat and anchors hero CTA) -->
+        <section aria-hidden class="h-0 overflow-hidden">&nbsp;</section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-12 bg-[var(--color-charcoal-light)]">
+            <div class="container mx-auto px-6">
+                <div class="max-w-3xl mx-auto text-center mb-8">
+                    <h2 class="text-3xl font-serif font-bold text-[var(--color-off-white)]">Frequently Asked Questions</h2>
+                    <p class="text-[var(--color-faded-text)] mt-3">Answers to the most common questions about our Full Groom service.</p>
+                </div>
+
+                <div class="space-y-4 max-w-3xl mx-auto text-[var(--color-faded-text)]">
+                    <details class="bg-[var(--color-charcoal-dark)] p-4 rounded-md">
+                        <summary class="cursor-pointer font-semibold text-[var(--color-off-white)]">How long will the groom take?</summary>
+                        <div class="mt-2">Typical sessions last 90–150 minutes depending on coat and behaviour. We always aim for calm, stress-free appointments.</div>
+                    </details>
+
+                    <details class="bg-[var(--color-charcoal-dark)] p-4 rounded-md">
+                        <summary class="cursor-pointer font-semibold text-[var(--color-off-white)]">Do you handle nervous dogs?</summary>
+                        <div class="mt-2">Yes — we use gentle handling techniques and short breaks. For very anxious dogs we recommend a Puppy First Groom introduction course.</div>
+                    </details>
+
+                    <details class="bg-[var(--color-charcoal-dark)] p-4 rounded-md">
+                        <summary class="cursor-pointer font-semibold text-[var(--color-off-white)]">Can I book recurring appointments?</summary>
+                        <div class="mt-2">Absolutely. Ask at the time of booking or contact us to set up a regular schedule for maintenance grooms.</div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related services -->
+        <section id="related-services" class="py-12 bg-[var(--color-charcoal-dark)]">
+            <div class="container mx-auto px-6">
+                <div class="flex items-center space-x-4 mb-6">
+                    <div class="w-12 h-px bg-[var(--color-gold)]"></div>
+                    <div class="text-sm font-semibold tracking-wide uppercase text-[var(--color-gold)]">Related Services</div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <a href="services.html#deshed" class="block bg-[var(--color-charcoal-light)] p-6 rounded-2xl hover:shadow-2xl transition-all">
+                        <h4 class="font-semibold text-[var(--color-off-white)] mb-1">Deshed</h4>
+                        <p class="text-[var(--color-faded-text)] text-sm">Undercoat brush-out to reduce shedding.</p>
+                    </a>
+                    <a href="services.html#puppy-first" class="block bg-[var(--color-charcoal-light)] p-6 rounded-2xl hover:shadow-2xl transition-all">
+                        <h4 class="font-semibold text-[var(--color-off-white)] mb-1">Puppy First Groom</h4>
+                        <p class="text-[var(--color-faded-text)] text-sm">Gentle introductions for young dogs.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[var(--color-charcoal-dark)] py-12 border-t border-[var(--color-charcoal-light)]">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-[var(--color-faded-text)]">
+                <a href="#" class="flex items-center">
+                    <img src="./img/brand/logo.png" alt="Watupdiggydog" class="h-16" />
+                </a>
+                <p class="m-0">&copy; 2025 All Rights Reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-[var(--color-off-white)] transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-[var(--color-off-white)] transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for smooth scrolling and mobile menu functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('[data-nav-link]');
+            const header = document.querySelector('header');
+
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenuButton.querySelector('.menu-icon').classList.toggle('open');
+            }
+
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const targetId = e.target.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            // Make header transparent on hero section and opaque on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-[var(--color-charcoal-dark)]', 'shadow-lg');
+                } else {
+                    header.classList.remove('bg-[var(--color-charcoal-dark)]', 'shadow-lg');
+                }
+            });
+
+            // Booking: open modal on larger screens, open TidyCal in new tab on small screens
+            // exclude the hero CTA so it can scroll down to the options instead
+            const openBtns = document.querySelectorAll('#open-tidycal, #open-tidycal-aside');
+            const heroBtn = document.getElementById('open-tidycal-hero');
+            const modal = document.getElementById('tidycal-modal');
+            const modalClose = document.getElementById('tidycal-close');
+            const tidyIframe = document.getElementById('tidycal-iframe-modal');
+
+            // Save and restore scroll position to prevent the parent from jumping when interacting with iframe
+            let savedScrollY = 0;
+            let previouslyFocusedElement = null;
+
+            function lockBodyScroll() {
+                savedScrollY = window.scrollY || document.documentElement.scrollTop;
+                // Prevent layout shift by fixing the body in place
+                // hide page scroll (more robust across browsers)
+                document.documentElement.classList.add('modal-open');
+                document.body.classList.add('modal-open');
+                document.documentElement.style.overflow = 'hidden';
+                // fix body position so the page doesn't jump when the scrollbar disappears
+                document.body.style.top = `-${savedScrollY}px`;
+                document.body.style.position = 'fixed';
+                document.body.style.left = '0';
+                document.body.style.right = '0';
+                document.body.style.width = '100%';
+                // disable touch/overscroll interactions on the root element to avoid unexpected re-centering
+                document.documentElement.style.touchAction = 'none';
+                document.documentElement.style.overscrollBehavior = 'none';
+            }
+
+            function unlockBodyScroll() {
+                document.body.classList.remove('modal-open');
+                document.documentElement.classList.remove('modal-open');
+                // clear styles
+                document.documentElement.style.overflow = '';
+                document.documentElement.style.touchAction = '';
+                document.documentElement.style.overscrollBehavior = '';
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.left = '';
+                document.body.style.right = '';
+                document.body.style.width = '';
+                // restore scroll
+                window.scrollTo(0, savedScrollY || 0);
+            }
+
+            function openBooking(e) {
+                e?.preventDefault();
+                // On small screens open TidyCal in a new tab for best usability
+                if (window.matchMedia('(max-width: 768px)').matches) {
+                    window.open('https://tidycal.com/hcwebstudios/test', '_blank', 'noopener');
+                    return;
+                }
+
+                // Save current focused element so we can restore focus when closing
+                previouslyFocusedElement = document.activeElement;
+
+                // Blur the activator to avoid the browser trying to scroll it into view
+                try { if (e && e.currentTarget && e.currentTarget.blur) e.currentTarget.blur(); } catch (err) {}
+
+                // Lock body scroll before showing modal to avoid shifts
+                lockBodyScroll();
+
+                // Ensure modal is a top-level child so it's not affected by other transforms/stacking contexts
+                try {
+                    if (modal && modal.parentElement !== document.body) document.body.appendChild(modal);
+                } catch (err) {}
+
+                // Show modal (position:fixed + transform centering keeps it centered regardless of click)
+                modal.classList.add('open');
+
+                // Focus modal title without causing the page to scroll
+                try { document.getElementById('tidycal-modal-title').focus({preventScroll: true}); } catch (err) {}
+            }
+
+            function closeBooking() {
+                modal.classList.remove('open');
+                unlockBodyScroll();
+                // restore focus to the element that opened the modal, without scrolling
+                try { if (previouslyFocusedElement && previouslyFocusedElement.focus) previouslyFocusedElement.focus({preventScroll: true}); } catch (err) {}
+                // reset iframe src to stop any running processes when closing
+                try { tidyIframe.src = tidyIframe.src; } catch (e) { /* ignore cross-origin issues */ }
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openBooking); });
+            // Hero CTA: scroll to the Service Options section (do not open modal)
+            if (heroBtn) {
+                heroBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const opts = document.getElementById('service-options');
+                    const headerEl = document.querySelector('header');
+                    const headerHeight = headerEl ? headerEl.offsetHeight : 80;
+                    const extraOffset = 12; // a little breathing room above the heading
+                    if (opts) {
+                        const targetY = opts.getBoundingClientRect().top + window.pageYOffset - headerHeight - extraOffset;
+                        window.scrollTo({ top: Math.max(0, Math.round(targetY)), behavior: 'smooth' });
+                    }
+                });
+             }
+             if (modalClose) modalClose.addEventListener('click', closeBooking);
+
+            // Close modal on ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeBooking();
+            });
+
+            // Close modal when clicking outside the content
+            if (modal) modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeBooking();
+            });
+         });
+     </script>
+</body>
+</html>
