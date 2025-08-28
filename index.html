@@ -21,7 +21,7 @@
             --color-wf: #fea400;
             --color-off-white: #f5f0ec;
             --color-faded-text: #8c8884;
-            --marquee-duration: 24s; /* adjustable */
+            --marquee-duration: 18s; /* adjustable */
         }
 
         /* Set base styles for the body */
@@ -138,9 +138,15 @@
         }
         .marquee__inner {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             align-items: stretch;
             /* ensure the inner width is large enough — we'll duplicate slides for a seamless loop */
+        }
+        /* Responsive gap - smaller on mobile */
+        @media (min-width: 768px) {
+            .marquee__inner {
+                gap: 1.5rem;
+            }
         }
         .marquee__inner > * {
             flex: 0 0 auto;
@@ -151,6 +157,12 @@
         }
         .animate-marquee {
             animation: marquee var(--marquee-duration) linear infinite;
+        }
+        /* Mobile-specific faster animation */
+        @media (max-width: 768px) {
+            .animate-marquee {
+                animation: marquee 7s linear infinite;
+            }
         }
         /* respect reduced motion preference */
         @media (prefers-reduced-motion: reduce) {
@@ -222,14 +234,14 @@
                     <!-- Dropdown menu -->
                     <div class="absolute left-0 mt-3 w-48 bg-[var(--color-charcoal-light)] rounded-lg shadow-lg py-2 transform opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all z-50">
                         <a href="service1.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Deshed</a>
-                        <a href="service2.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Deshed bath and towel dry</a>
+                        <a href="service2.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Deshed Bath and Towel Dry</a>
                         <a href="service3.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Full Groom</a>
-                        <a href="service4.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Full Groom style cuts</a>
+                        <a href="service4.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Full Groom Style Cuts</a>
                         <a href="service5.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Nails</a>
-                        <a href="service6.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Oodles, poodles and doodles</a>
+                        <a href="service6.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Oodles, Poodles and Doodles</a>
                         <a href="service7.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Puppy First Groom</a>
-                        <a href="service8.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Senior comfort grooms</a>
-                        
+                        <a href="service8.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Senior Comfort Grooms</a>
+
                     </div>
                 </div>
                 <a href="contact.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors">Contact Us</a>
@@ -341,54 +353,54 @@
                 <div class="marquee full-bleed">
                     <div class="marquee__inner animate-marquee">
                         <!-- Original set -->
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-1.jpg" alt="Featured Project 1" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-2.jpg" alt="Featured Project 2" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-3.jpg" alt="Featured Project 3" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="img/slider/hair-style-4.jpg" alt="Featured Project 4" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-5.jpg" alt="Featured Project 5" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-6.jpg" alt="Featured Project 6" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-7.jpg" alt="Featured Project 7" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-8.jpg" alt="Featured Project 8" class="w-full aspect-square object-cover">
                         </div>
 
                         <!-- Duplicate set for seamless loop -->
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-1.jpg" alt="Featured Project 1" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-2.jpg" alt="Featured Project 2" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-3.jpg" alt="Featured Project 3" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="img/slider/hair-style-4.jpg" alt="Featured Project 4" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-5.jpg" alt="Featured Project 5" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-6.jpg" alt="Featured Project 6" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-7.jpg" alt="Featured Project 7" class="w-full aspect-square object-cover">
                         </div>
-                        <div class="w-[400px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
+                        <div class="w-[250px] md:w-[400px] rounded-lg overflow-hidden shadow-xl img-hover-scale">
                             <img src="./img/slider/hair-style-8.jpg" alt="Featured Project 8" class="w-full aspect-square object-cover">
                         </div>
                     </div>

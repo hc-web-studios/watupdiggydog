@@ -177,10 +177,9 @@
             }
         }
     </style>
-</head>
 <body class="bg-[var(--color-charcoal-dark)] text-[var(--color-off-white)]">
 
-      <!-- Header & Navigation - UPDATED to match new image -->
+    <!-- Header & Navigation - UPDATED to match new image -->
     <header class="sticky top-0 z-50 bg-[var(--color-charcoal-dark)] transition-colors duration-300">
         <nav class="container mx-auto px-6 py-8 flex items-center justify-between">
             <!-- Logo on the left side, with an updated look -->
@@ -198,7 +197,7 @@
 
              <!-- Navigation Links in the center -->
             <div class="hidden md:flex flex-1 items-center justify-center space-x-12">
-                <a href="index.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors">Home</a>
+                <a href="index.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors nav-link active">Home</a>
                 <div class="relative group">
                     <a href="" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
                         <span>About</span>
@@ -212,8 +211,8 @@
                     </div>
                 </div>
 
-                 <div class="relative group nav-link active">
-                    <a href="services.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1 ">
+                 <div class="relative group">
+                    <a href="services.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors inline-flex items-center space-x-1">
                         <span>Services</span>
                         <svg class="w-4 h-4 text-white group-hover:text-[var(--color-gold)] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </a>
@@ -221,14 +220,14 @@
                     <!-- Dropdown menu -->
                     <div class="absolute left-0 mt-3 w-48 bg-[var(--color-charcoal-light)] rounded-lg shadow-lg py-2 transform opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all z-50">
                         <a href="service1.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Deshed</a>
-                        <a href="service2.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Deshed bath and towel dry</a>
+                        <a href="service2.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Deshed Bath and Towel Dry</a>
                         <a href="service3.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Full Groom</a>
-                        <a href="service4.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Full Groom style cuts</a>
+                        <a href="service4.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Full Groom Style Cuts</a>
                         <a href="service5.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Nails</a>
-                        <a href="service6.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Oodles, poodles and doodles</a>
+                        <a href="service6.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Oodles, Poodles and Doodles</a>
                         <a href="service7.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Puppy First Groom</a>
-                        <a href="service8.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Senior comfort grooms</a>
-                        
+                        <a href="service8.html" class="block px-4 py-2 text-sm text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-dark)]">Senior Comfort Grooms</a>
+
                     </div>
                 </div>
                 <a href="contact.html" class="text-sm font-semibold tracking-wide hover:text-[var(--color-gold)] transition-colors">Contact Us</a>
@@ -236,7 +235,7 @@
 
             <!-- CTA Button on the right -->
             <div class="hidden md:block flex-shrink-0">
-                <a href="#" class="border border-[var(--color-gold)] text-[var(--color-gold)] font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[var(--color-gold)] hover:text-[var(--color-charcoal-dark)] transition-colors">
+                <a href="services.html" class="border border-[var(--color-gold)] text-[var(--color-gold)] font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[var(--color-gold)] hover:text-[var(--color-charcoal-dark)] transition-colors">
                     Book Today
                 </a>
             </div>
@@ -292,13 +291,13 @@
                             </button>
                             <div class="mobile-dropdown-content hidden pl-6 mt-2 space-y-2">
                                 <a href="service1.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Deshed</a>
-                                <a href="service2.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Deshed bath and towel dry</a>
+                                <a href="service2.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Deshed Bath and Towel Dry</a>
                                 <a href="service3.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Full Groom</a>
-                                <a href="service4.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Full Groom style cuts</a>
+                                <a href="service4.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Full Groom Style Cuts</a>
                                 <a href="service5.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Nails</a>
-                                <a href="service6.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Oodles, poodles and doodles</a>
+                                <a href="service6.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Oodles, Poodles and Doodles</a>
                                 <a href="service7.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Puppy First Groom</a>
-                                <a href="service8.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Senior comfort grooms</a>
+                                <a href="service8.html" class="block py-3 px-6 text-base text-[var(--color-faded-text)] hover:text-[var(--color-off-white)] hover:bg-[var(--color-charcoal-light)] rounded-lg transition-all transform hover:scale-105" data-nav-link>Senior Comfort Grooms</a>
                             </div>
                         </div>
 
